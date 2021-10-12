@@ -1,7 +1,7 @@
 String getQuestionByOrder(int orderNum) {
-  return """{questions(where:{order:$orderNum}){order,text,type}}""";
+  return """query{questions(where:{order:$orderNum}){order,text,type}}""";
 }
 
 String getAllQuestions() {
-  return """query{{questions{order,text,type}}}""";
+  return r"""query{questions{order,text,type}}""";
 }

@@ -31,7 +31,7 @@ class Question {
 class Component {
   String label;
   int id;
-  Component({required this.id,required this.label});
+  Component({required this.id, required this.label});
   factory Component.fromJson(Map<String, dynamic> json) =>
       _$ComponentFromJson(json);
   Map<String, dynamic> toJson() => _$ComponentToJson(this);

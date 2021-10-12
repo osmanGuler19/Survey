@@ -17,9 +17,6 @@ class QuestionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController controller = new TextEditingController();
-    
-    final q = context.read<myModelView>().questionList;
-    final ind = context.read<myModelView>().i;
 
     return Scaffold(
       appBar: AppBar(
@@ -27,46 +24,41 @@ class QuestionPage extends StatelessWidget {
       ),
       backgroundColor: Color.fromRGBO(240, 240, 240, 1),
       body: Center(
-        child: context.watch<myModelView>().state == QState.BUSY
-            ? buildLoadingWidget()
-            : context.watch<myModelView>().state == QState.ERROR
-                ? buildErrorWidget()
-                : Center(
-                    child: Container(
-                    padding: EdgeInsets.only(
-                        top: 30, left: 30, right: 30, bottom: 20),
-                    color: Colors.white,
-                    width: MediaQuery.of(context).size.height * 0.8,
-                    height: MediaQuery.of(context).size.height * 0.6,
-                    child: Column(
-                      children: [
-                        JumpingDotsProgressIndicator(
-                          fontSize: 20.0,
-                        ),
-                        ProgressBar(val: 80),
-                        Consumer<myModelView>(builder: (_, a, child){
-                          return QuestionContainer(qText: q[ind].text);
-                        }),
-                        
-                        Container(
-                          child: AnswerContainer(
-                            controller: controller,
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.only(top: 20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              PreviousButton(isClickable: true),
-                              //NextButton(isClickable: true, index: ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  )),
-      ),
+          child: Container(
+        padding: EdgeInsets.only(top: 30, left: 30, right: 30, bottom: 20),
+        color: Colors.white,
+        width: MediaQuery.of(context).size.height * 0.8,
+        height: MediaQuery.of(context).size.height * 0.6,
+        child: Column(
+          children: [
+            JumpingDotsProgressIndicator(
+              fontSize: 20.0,
+            ),
+            ProgressBar(val: 80),
+            Consumer<myModelView>(builder: (_, a, child) {
+              if (a.state == QState.IDLE) print(a.questionList);
+              return a.state == QState.BUSY
+                  ? CircularProgressIndicator()
+                  : QuestionContainer(qText: a.questionList[a.i].text);
+            }),
+            Container(
+              child: AnswerContainer(
+                controller: controller,
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  PreviousButton(isClickable: true),
+                  //NextButton(isClickable: true, index: ),
+                ],
+              ),
+            )
+          ],
+        ),
+      )),
     );
   }
 }
