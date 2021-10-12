@@ -3,9 +3,8 @@ import '../viewmodel/myModelView.dart';
 import 'package:provider/provider.dart';
 
 class NextButton extends StatelessWidget {
-  final bool isClickable;
-  final int index;
-  const NextButton({Key? key, required this.isClickable, required this.index})
+  
+  const NextButton({Key? key})
       : super(key: key);
 
   @override
@@ -14,7 +13,6 @@ class NextButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {
         vm.nextQuestion();
-        vm.questionList[vm.i];
       },
       child: Text(
         'Next',

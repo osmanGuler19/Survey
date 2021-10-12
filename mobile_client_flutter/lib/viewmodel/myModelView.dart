@@ -14,7 +14,7 @@ class myModelView extends ChangeNotifier {
   late QState _state;
 
   late List<Question> questionList;
-  int i = 0;
+  int i = 1;
 
   myModelView() {
     questionList = [];
@@ -28,8 +28,10 @@ class myModelView extends ChangeNotifier {
   }
 
   void preQuestion() {
-    i--;
-    notifyListeners();
+    if(i>1){
+      i--;
+      notifyListeners();
+    }
   }
 
   QState get state => _state;

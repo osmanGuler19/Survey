@@ -51,8 +51,8 @@ class QuestionPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  PreviousButton(isClickable: true),
-                  //NextButton(isClickable: true, index: ),
+                  PreviousButton(),
+                  NextButton(),
                 ],
               ),
             )
