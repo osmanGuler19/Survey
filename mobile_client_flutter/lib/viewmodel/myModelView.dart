@@ -41,19 +41,14 @@ class myModelView extends ChangeNotifier {
   }
 
   Future<List<Question>> fetchQuestions() async {
-    print("try öncesi");
-
     try {
-      print("başlangıç");
       state = QState.BUSY;
       final QueryOptions options = QueryOptions(
         document: gql(getAllQuestions()),
       );
-      print("client öncesi");
       GraphQLClient client = await getClient();
-      print("client sonrası");
       final QueryResult result = await client.query(options);
-      print("result : ${result.data!["questions"]}");
+      //print("result : ${result.data!["questions"]}");
       List<Question> questions = [];
       state = QState.IDLE;
       List<dynamic> qs = result.data!["questions"] as List<dynamic>;

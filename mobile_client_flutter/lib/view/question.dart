@@ -34,11 +34,16 @@ class QuestionPage extends StatelessWidget {
             JumpingDotsProgressIndicator(
               fontSize: 20.0,
             ),
-            ProgressBar(val: 80),
+            Consumer<myModelView>(
+              builder: (_, a, child) {
+                return a.state ==
+                    QState.BUSY ? CircularProgressIndicator() : ProgressBar();
+              },
+            ),
             Consumer<myModelView>(builder: (_, a, child) {
               if (a.state == QState.IDLE) print(a.questionList);
               return a.state == QState.BUSY
-                  ? CircularProgressIndicator()
+                  ? SizedBox()
                   : QuestionContainer(qText: a.questionList[a.i].text);
             }),
             Container(
