@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
-import '../viewmodel/myModelView.dart';
+import '../../viewmodel/myModelView.dart';
 import 'package:provider/provider.dart';
 
-class NextButton extends StatelessWidget {
-  
-  const NextButton({Key? key})
-      : super(key: key);
+class PreviousButton extends StatelessWidget {
+  const PreviousButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final vm = Provider.of<myModelView>(context);
     return ElevatedButton(
       onPressed: () {
-        vm.nextQuestion();
+        vm.preQuestion();
       },
       child: Text(
-        'Next',
+        'Previous',
         style: TextStyle(color: Colors.white),
       ),
       style: ElevatedButton.styleFrom(

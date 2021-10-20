@@ -2,11 +2,11 @@ import 'package:client_flutter/viewmodel/myModelView.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:progress_indicators/progress_indicators.dart';
-import '../widgets/progressBar.dart';
-import '../widgets/questionContainer.dart';
-import '../widgets/answerContainer.dart';
-import '../widgets/nextButton.dart';
-import '../widgets/previousButton.dart';
+import '../widgets/question_page/progressBar.dart';
+import '../widgets/question_page/questionContainer.dart';
+import '../widgets/question_page/answerContainer.dart';
+import '../widgets/question_page/nextButton.dart';
+import '../widgets/question_page/previousButton.dart';
 import '../viewmodel/myModelView.dart';
 import 'package:provider/provider.dart';
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../widgets/user_login_logo.dart';
-import '../widgets/user_login_email.dart';
-import '../widgets/user_login_password.dart';
-import '../widgets/user_login_login_button.dart';
-import '../widgets/user_login_forget_button.dart';
+import '../widgets/login_page/user_login_logo.dart';
+import '../widgets/login_page/user_login_email.dart';
+import '../widgets/login_page/user_login_password.dart';
+import '../widgets/login_page/user_login_login_button.dart';
+import '../widgets/login_page/user_login_forget_button.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);

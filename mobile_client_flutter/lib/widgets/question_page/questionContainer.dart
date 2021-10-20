@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../viewmodel/myModelView.dart';
+import '../../viewmodel/myModelView.dart';
 
 class QuestionContainer extends StatelessWidget {
   final String qText;

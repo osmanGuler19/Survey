@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:provider/provider.dart';
-import '../viewmodel/myModelView.dart';
+import '../../viewmodel/myModelView.dart';
 
 class ProgressBar extends StatelessWidget {
   const ProgressBar({Key? key}) : super(key: key);
