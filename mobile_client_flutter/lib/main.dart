@@ -4,7 +4,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:client_flutter/services/gql.dart';
 import 'package:provider/provider.dart';
 import 'view/question.dart';
-
+import 'view/login.dart';
 
 void main() async {
   //await initHiveForFlutter();
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) => QuestionPage(),
+          '/': (context) => LoginPage(),
           //'/users': (context) => UserListScreen(),
         },
         debugShowCheckedModeBanner: false,
