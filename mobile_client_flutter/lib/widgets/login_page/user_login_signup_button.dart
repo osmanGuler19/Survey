@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class UserLoginButton extends StatelessWidget {
-  const UserLoginButton({Key? key}) : super(key: key);
+
+class UserSignupButton extends StatelessWidget {
+  const UserSignupButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,9 +12,9 @@ class UserLoginButton extends StatelessWidget {
                   style: raisedButtonStyle,
                   onPressed: () {},
                   child: Text(
-                    "Log In",
+                    "Sign in",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       
                     ),
                   ),
@@ -22,14 +23,15 @@ class UserLoginButton extends StatelessWidget {
   }
 }
 
-
 final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
-  //onPrimary: Colors.lightGreenAccent,
-  primary: Color.fromRGBO(0, 21, 58, 1),
+  //onPrimary: Colors.lightBlueAccent,
+  primary: Colors.white,
   //minimumSize: Size(88, 36),
   padding: EdgeInsets.all(12),
   fixedSize: Size(144,36),
+  side: BorderSide(color: Colors.black),
   shape: const RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(24)),
+
   ),
 );
