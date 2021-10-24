@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../viewmodel/myModelView.dart';
+import 'package:marquee/marquee.dart';
+
 
 class QuestionContainer extends StatelessWidget {
   final String qText;
@@ -8,12 +10,17 @@ class QuestionContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List qList = new myModelView().questionList;
-    return Container(
-        padding: EdgeInsets.only(top: 20, bottom: 20),
-        child: Align(
-            alignment: Alignment.topLeft,
+    return Expanded(
+      //height: 100,
+      //padding: EdgeInsets.only(top: 20, bottom: 20),
+      
+      child: Align(
+          alignment: Alignment.topLeft,
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
             child: Text(
                 qText,
-                style: TextStyle(color: Colors.black, fontSize: 40))));
+                style: TextStyle(color: Colors.black, fontSize: 40)),
+          )));
   }
 }

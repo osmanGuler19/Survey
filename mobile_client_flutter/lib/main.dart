@@ -5,6 +5,7 @@ import 'package:client_flutter/services/gql.dart';
 import 'package:provider/provider.dart';
 import 'view/question.dart';
 import 'view/login.dart';
+import 'view/signin.dart';
 
 void main() async {
   //await initHiveForFlutter();
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) => LoginPage(),
+          '/': (context) => SignInPage(),
           //'/users': (context) => UserListScreen(),
         },
         debugShowCheckedModeBanner: false,

@@ -9,7 +9,13 @@ class ProgressBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final vm = Provider.of<myModelView>(context);
-    var val =(vm.i * 100) ~/ vm.questionList.length;
+    var val;
+    if (vm.questionList.length > 0) {
+      val = (vm.i * 100) ~/ vm.questionList.length;
+    } else {
+      val = 0;
+    }
+
     return FAProgressBar(
       currentValue: val,
       displayText: '%',
