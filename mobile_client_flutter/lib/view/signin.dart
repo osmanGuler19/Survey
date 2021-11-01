@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/signup_page/genericTextField.dart';
 import '../widgets/signup_page/signin_button.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);
@@ -24,6 +25,8 @@ class SignInPage extends StatelessWidget {
           child: Column(
             
             children: [
+              SvgPicture.asset('assets/images/university_logo.svg',placeholderBuilder: (BuildContext context) => Container(
+                      child: const CircularProgressIndicator()),),
               GenericTextField(
                 hText: "First Name",
                 controller: FirstNameController,

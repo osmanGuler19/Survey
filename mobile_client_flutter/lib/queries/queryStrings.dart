@@ -5,3 +5,10 @@ String getQuestionByOrder(int orderNum) {
 String getAllQuestions() {
   return r"""query{questions{order,text,type}}""";
 }
+
+String addUser(
+    String first_name, String last_name, String email, String password) {
+  return """mutation AddUser($first_name:String,$last_name:String,$email:String,$password:String){
+          action addUser(input: {})
+        }""";
+}

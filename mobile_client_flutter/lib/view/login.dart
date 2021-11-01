@@ -13,7 +13,10 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Log in"),
+      ),
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width/2,

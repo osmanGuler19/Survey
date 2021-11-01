@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'view/question.dart';
 import 'view/login.dart';
 import 'view/signin.dart';
-
+import 'view/landing_page.dart';
 void main() async {
   //await initHiveForFlutter();
   runApp(MyApp());
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) => SignInPage(),
+          '/': (context) => LoginPage(),
           //'/users': (context) => UserListScreen(),
         },
         debugShowCheckedModeBanner: false,
