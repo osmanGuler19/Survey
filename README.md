@@ -16,9 +16,36 @@ _Hands On With The GRANDstack Starter Video_
 
 ## Quickstart
 
-The easiest way to get started with the GRANDstack Starter is to create a Neo4j Sandbox instance and use the `create-grandstack-app` command line tool.
+The easiest way to get started with the GRANDstack Starter is ~~to create a Neo4j Sandbox instance~~ to use **docker-compose** instead of their commercial solutions that locks you up.
 
-(If you have a running Neo4j database on localhost via Neo4j Desktop or a Neo4j server installation, change the password in `api/.env`)
+## Docker Compose
+
+You can quickly start via:
+
+```bash
+docker-compose up
+```
+
+> Flutter should crash because it's weak, and can't resolve basic conflicts ` Because no versions of json_serializable match >5.0.2 <6.0.0 and json_serializable 5.0.2 depends on json_annotation >=4.1.0 <4.2.0`
+
+If you want to load the example DB after the services have been started:
+
+```
+docker-compose run api npm run seedDb
+```
+
+> As expected that fails too: 
+
+```
+Error: Error: Response not successful: Received status code 400
+    at /app/src/seed/seed-db.js:32:17
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at async Promise.all (index 0)
+```
+
+See [the project releases](https://github.com/grand-stack/grand-stack-starter/releases) for the changelog.
+
+# The rest of the documentation is mostly useless
 
 ### 1. Create A Neo4j Instance
 
@@ -193,24 +220,6 @@ vercel secret add grand_stack_starter_neo4j_password <YOUR_DATABASE_USER_PASSWOR
 ```
 
 3. Run `vercel`
-
-## Docker Compose
-
-You can quickly start via:
-
-```
-docker-compose up -d
-```
-
-If you want to load the example DB after the services have been started:
-
-```
-docker-compose run api npm run seedDb
-```
-
-See [the project releases](https://github.com/grand-stack/grand-stack-starter/releases) for the changelog.
-
-You can find instructions for other ways to use Neo4j (Neo4j Desktop, Neo4j Aura, and other cloud services) in the [Neo4j directory README.](./neo4j)
 
 This project is licensed under the Apache License v2.
 Copyright (c) 2020 Neo4j, Inc.
