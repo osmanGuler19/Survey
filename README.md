@@ -26,6 +26,13 @@ You can quickly start via:
 docker-compose up
 ```
 
+Access GraphQL on http://localhost:4001/graphql
+
+Access Neo4J on http://localhost:7474
+
+Can't access flutter app because it can't resolve a basic dependency.
+
+
 > Flutter should crash because it's weak, and can't resolve basic conflicts ` Because no versions of json_serializable match >5.0.2 <6.0.0 and json_serializable 5.0.2 depends on json_annotation >=4.1.0 <4.2.0`
 
 If you want to load the example DB after the services have been started:
