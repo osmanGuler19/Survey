@@ -9,6 +9,29 @@ String getAllQuestions() {
 String addUser(
     String first_name, String last_name, String email, String password) {
   return """mutation AddUser($first_name:String,$last_name:String,$email:String,$password:String){
-          action addUser(input: {})
+          addUser(input: {first_name:$first_name,last_name:$last_name,email:$email,password:$password}){
+            id
+            first_name
+            last_name
+            email
+            password
+          }
+        }""";
+}
+
+
+String getUserByEmail(String email,String password) {
+  return """query{users(where:{email:$email,password:$password}){id,first_name,last_name,email,password}}""";
+}
+
+String addSurvey(String title, String description, String userId,List Questions) {
+  return """mutation AddSurvey($title:String,$description:String,$userId:String){
+          addSurvey(input: {title:$title,description:$description,userId:$userId,questions:$Questions}){
+            id
+            title
+            description
+            userId
+            questions
+          }
         }""";
 }

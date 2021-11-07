@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../viewmodel/myModelView.dart';
+import '../../viewmodel/questionModelView.dart';
 import 'package:provider/provider.dart';
 
 class PreviousButton extends StatelessWidget {
@@ -7,7 +7,7 @@ class PreviousButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final vm = Provider.of<myModelView>(context);
+    final vm = Provider.of<questionModelView>(context);
     return ElevatedButton(
       onPressed: () {
         vm.preQuestion();

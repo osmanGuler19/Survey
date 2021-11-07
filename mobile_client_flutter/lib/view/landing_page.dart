@@ -1,3 +1,4 @@
+import 'package:client_flutter/view/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -148,6 +149,13 @@ class First extends StatelessWidget {
             Text('The Responsibility Matrix',style: TextStyle(fontSize: 40),textAlign: TextAlign.center,),
             SizedBox(height: 10,),
             Text('The result of applying the components of responsibility across the scopes of responsibility is a two-dimensional matrix of spaces that we call a “responsibility matrix.” The table below shows the responsibility matrix and defines  each cell of  the 2-dimensional space', style: TextStyle(fontSize: 20),),
+            SizedBox(height: 20,),
+            Image.asset('assets/images/matrix_specs.png',alignment: Alignment.center,),
+            SizedBox(height: 30,),
+            ElevatedButton(onPressed: (){Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LoginPage()));}, child: Text('Start The Survey',style: TextStyle(fontSize: 30),),style: ElevatedButton.styleFrom(primary: Color.fromRGBO(0, 21, 58, 1),padding: EdgeInsets.all(15),),),
+            SizedBox(height: 100,),
           ],
         ),
       ),

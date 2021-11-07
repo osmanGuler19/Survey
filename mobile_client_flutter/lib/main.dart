@@ -1,4 +1,5 @@
-import 'package:client_flutter/viewmodel/myModelView.dart';
+import 'package:client_flutter/viewmodel/questionModelView.dart';
+import 'package:client_flutter/viewmodel/userModelView.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:client_flutter/services/gql.dart';
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<myModelView>(create: (_) => myModelView())
+        ChangeNotifierProvider<questionModelView>(create: (_) => questionModelView()),
+        ChangeNotifierProvider<userModelView>(create: (_) => userModelView()),
       ],
       child: MaterialApp(
         title: 'GrandStack Flutter',
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) => LoginPage(),
+          '/': (context) => LandingPage(),
           //'/users': (context) => UserListScreen(),
         },
         debugShowCheckedModeBanner: false,

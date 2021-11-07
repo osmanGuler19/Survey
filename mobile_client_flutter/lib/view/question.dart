@@ -1,4 +1,4 @@
-import 'package:client_flutter/viewmodel/myModelView.dart';
+import 'package:client_flutter/viewmodel/questionModelView.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:progress_indicators/progress_indicators.dart';
@@ -7,7 +7,7 @@ import '../widgets/question_page/questionContainer.dart';
 import '../widgets/question_page/answerContainer.dart';
 import '../widgets/question_page/nextButton.dart';
 import '../widgets/question_page/previousButton.dart';
-import '../viewmodel/myModelView.dart';
+import '../viewmodel/questionModelView.dart';
 import 'package:provider/provider.dart';
 
 class QuestionPage extends StatelessWidget {
@@ -15,7 +15,7 @@ class QuestionPage extends StatelessWidget {
 
   const QuestionPage({Key? key}) : super(key: key);
 
-  Widget getWidgetsByCondition(myModelView a) {
+  Widget getWidgetsByCondition(questionModelView a) {
     if (a.state == QState.BUSY) {
       return Column(
         children: [
@@ -57,7 +57,7 @@ class QuestionPage extends StatelessWidget {
               JumpingDotsProgressIndicator(
                 fontSize: 20.0,
               ),
-              Consumer<myModelView>(builder: (_, a, child) {
+              Consumer<questionModelView>(builder: (_, a, child) {
                 return getWidgetsByCondition(a);
               }),
               Container(

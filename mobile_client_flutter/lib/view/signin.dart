@@ -52,7 +52,7 @@ class SignInPage extends StatelessWidget {
                 controller: PasswordConfirmController,
               ),
               SizedBox(height: 20),
-              SignInButton()
+              SignInButton(emailController: EmailController, passwordController: PasswordController, nameController: FirstNameController, lastNameController: LastNameController),
             ],
           ),
         ),

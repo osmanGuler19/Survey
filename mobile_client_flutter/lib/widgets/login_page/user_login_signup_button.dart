@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '/../view/signin.dart';
 
 class UserSignupButton extends StatelessWidget {
   const UserSignupButton({Key? key}) : super(key: key);
@@ -7,19 +7,21 @@ class UserSignupButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-                padding: EdgeInsets.symmetric(vertical: 16.0),
-                child: ElevatedButton(
-                  style: raisedButtonStyle,
-                  onPressed: () {},
-                  child: Text(
-                    "Sign in",
-                    style: TextStyle(
-                      color: Colors.black,
-                      
-                    ),
-                  ),
-                ),
-              );
+      padding: EdgeInsets.symmetric(vertical: 16.0),
+      child: ElevatedButton(
+        style: raisedButtonStyle,
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => SignInPage()));
+        },
+        child: Text(
+          "Sign in",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -28,10 +30,9 @@ final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
   primary: Colors.white,
   //minimumSize: Size(88, 36),
   padding: EdgeInsets.all(12),
-  fixedSize: Size(144,36),
+  fixedSize: Size(144, 36),
   side: BorderSide(color: Colors.black),
   shape: const RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(24)),
-
   ),
 );

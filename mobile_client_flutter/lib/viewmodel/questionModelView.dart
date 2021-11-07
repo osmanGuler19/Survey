@@ -10,13 +10,13 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 
 enum QState { IDLE, BUSY, ERROR, DEFAULT }
 
-class myModelView extends ChangeNotifier {
+class questionModelView extends ChangeNotifier {
   late QState _state;
 
   late List<Question> questionList;
   int i = 1;
 
-  myModelView() {
+  questionModelView() {
     questionList = [];
     _state = QState.IDLE;
     fetchQuestions();
@@ -67,22 +67,3 @@ class myModelView extends ChangeNotifier {
   }
 }
 
-/*
-Query(
-          options: QueryOptions(document: gql(getAllQuestions())),
-          builder: (QueryResult result,
-              {VoidCallback refetch, FetchMore fetchMore}) {
-            if (result.hasException) {
-              return Center(
-                child: Text(result.exception.toString()),
-              );
-            }
-            if (result.loading) {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-            return Text()
-          });
-
-*/
