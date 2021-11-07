@@ -1,20 +1,51 @@
 import 'package:flutter/material.dart';
+import '../../viewmodel/userModelView.dart';
+import 'package:provider/provider.dart';
 
 class SignInButton extends StatelessWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final TextEditingController nameController;
   final TextEditingController lastNameController;
+  final TextEditingController passwordCheckController;
 
-  const SignInButton({Key? key, required this.emailController, required this.passwordController, required this.nameController, required this.lastNameController}) : super(key: key);
+  const SignInButton(
+      {Key? key,
+      required this.emailController,
+      required this.passwordController,
+      required this.nameController,
+      required this.lastNameController,
+      required this.passwordCheckController})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final vm = Provider.of<userModelView>(context);
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 16.0),
       child: ElevatedButton(
         style: raisedButtonStyle,
-        onPressed: () {},
+        onPressed: () {
+          if (passwordController.text != passwordCheckController.text) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text('Passwords do not match'),
+            ));
+            return;
+          }
+
+          if (emailController.text != '' &&
+              passwordController.text != '' &&
+              nameController.text != '' &&
+              lastNameController.text != '' &&
+              passwordCheckController.text != '') {
+            vm.AddUser(emailController.text, passwordController.text,nameController.text, lastNameController.text);
+
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Center(child: Text('Signed in successfully!')),
+            ));
+
+          }
+        },
         child: Text(
           "Sign in",
           style: TextStyle(

@@ -11,6 +11,7 @@ class GenericTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: TextFormField(
+        
         decoration: InputDecoration(
           hintText: hText,
           enabledBorder: OutlineInputBorder(
@@ -19,7 +20,7 @@ class GenericTextField extends StatelessWidget {
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.blue,width: 2),borderRadius: BorderRadius.circular(10)
           ),
-          
+          suffixIcon: IconButton(icon: Icon(Icons.clear_rounded),onPressed: controller.clear,)
         ),
         controller: controller,
       ),

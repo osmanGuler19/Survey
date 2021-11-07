@@ -14,11 +14,11 @@ type Answer {
 }
 
 type User {
-  first_name: String
-  last_name: String
   email: String
-  password: String
-  surveys: [Survey]
+  name: String
+  surname: String
+  passw: String
+  #surveys: [Survey]
 }
 
 type Survey {
