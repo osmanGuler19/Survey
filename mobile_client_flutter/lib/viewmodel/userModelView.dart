@@ -4,13 +4,13 @@ import '../services/gql.dart';
 import '../queries/queryStrings.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-enum QState { IDLE, BUSY, ERROR, DEFAULT }
+enum UState { IDLE, BUSY, ERROR, DEFAULT }
 
 class userModelView extends ChangeNotifier {
-  late User _user;
-  late QState _state;
+  late User user;
+  late UState _state;
   userModelView() {
-    _state = QState.IDLE;
+    _state = UState.IDLE;
   }
 
   Future<void> AddUser(
@@ -18,7 +18,7 @@ class userModelView extends ChangeNotifier {
     try {
       print(addUser("osman", "guler", "opasdas", "asdasd"));
       print(email + " " + password + " " + fname + " " + lname);
-      QState.BUSY;
+      UState.BUSY;
       final MutationOptions options = MutationOptions(
         document: gql(addUser(fname, lname, email, password)),
         variables: <String, dynamic>{
@@ -33,18 +33,18 @@ class userModelView extends ChangeNotifier {
       print(client);
       final QueryResult result = await client.mutate(options);
       //Getting the result. You have to watch out the return order and types. It changes with every query.
-      _user = User.fromJson(result.data!['createUsers']['users'][0]);
+      user = User.fromJson(result.data!['createUsers']['users'][0]);
       notifyListeners();
-      _state = QState.IDLE;
+      _state = UState.IDLE;
     } catch (e) {
       print(e);
-      _state = QState.ERROR;
+      _state = UState.ERROR;
     }
   }
 
   Future<User?> getUser(String email, String password) async {
     try {
-      QState.BUSY;
+      UState.BUSY;
       final QueryOptions options = QueryOptions(
           document: gql(getUserByEmail(email, password)),
           fetchPolicy: FetchPolicy.networkOnly);
@@ -52,20 +52,20 @@ class userModelView extends ChangeNotifier {
       GraphQLClient client = await getClient();
       final QueryResult result = await client.query(options);
       print(result.data.toString());
-      _user = User.fromJson(result.data!['users'][0]);
+      user = User.fromJson(result.data!['users'][0]);
       if (result.hasException) {
-        _state = QState.ERROR;
+        _state = UState.ERROR;
         return null;
       }
       if (result.data == null) {
-        _state = QState.ERROR;
+        _state = UState.ERROR;
         return null;
       }
-      _state = QState.IDLE;
-      return _user;
+      _state = UState.IDLE;
+      return user;
     } catch (e) {
       print(e);
-      _state = QState.ERROR;
+      _state = UState.ERROR;
       return null;
     }
   }

@@ -9,6 +9,7 @@ import '../widgets/question_page/nextButton.dart';
 import '../widgets/question_page/previousButton.dart';
 import '../viewmodel/questionModelView.dart';
 import 'package:provider/provider.dart';
+import '../../viewmodel/userModelView.dart';
 
 class QuestionPage extends StatelessWidget {
   //final List qList = new myModelView().questionList;
@@ -38,12 +39,12 @@ class QuestionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController controller = new TextEditingController();
-    //var isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
-
-
+    final vm = Provider.of<userModelView>(context);
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text("Question Survey")),
+        actions: <Widget>[ Row(children: [Text(vm.user.name+ "  "+vm.user.surname+"  "),Icon(Icons.self_improvement_outlined)],)],
+
       ),
       backgroundColor: Color.fromRGBO(240, 240, 240, 1),
       body: Center(

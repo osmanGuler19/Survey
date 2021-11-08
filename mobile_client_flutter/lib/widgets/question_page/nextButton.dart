@@ -10,12 +10,21 @@ class NextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final vm = Provider.of<questionModelView>(context);
+    String isLast(){
+    if(vm.isLastQuestion()){
+      return "Submit";
+    }
+    else{
+      return "Next";
+    }
+    }
+
     return ElevatedButton(
       onPressed: () {
         vm.nextQuestion();
       },
       child: Text(
-        'Next',
+        isLast(),
         style: TextStyle(color: Colors.white),
       ),
       style: ElevatedButton.styleFrom(
@@ -26,3 +35,4 @@ class NextButton extends StatelessWidget {
     );
   }
 }
+

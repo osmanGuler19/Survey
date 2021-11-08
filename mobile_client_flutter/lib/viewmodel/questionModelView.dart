@@ -14,7 +14,7 @@ class questionModelView extends ChangeNotifier {
   late QState _state;
 
   late List<Question> questionList;
-  int i = 1;
+  int i = 0;
 
   questionModelView() {
     questionList = [];
@@ -22,13 +22,24 @@ class questionModelView extends ChangeNotifier {
     fetchQuestions();
   }
 
+  bool isLastQuestion(){
+    if(i==questionList.length-1){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+
   void nextQuestion() {
-    i++;
-    notifyListeners();
+    if(i<questionList.length-1){
+      i++;
+      notifyListeners();
+    }  
   }
 
   void preQuestion() {
-    if(i>1){
+    if(i>0){
       i--;
       notifyListeners();
     }
