@@ -18,27 +18,28 @@ class QuestionPage extends StatelessWidget {
   Widget getWidgetsByCondition(questionModelView a) {
     if (a.state == QState.BUSY) {
       return Column(
-        children: [
-          SizedBox(),
-          CircularProgressIndicator(),
-          SizedBox()
-        ],
+        children: [SizedBox(), CircularProgressIndicator(), SizedBox()],
       );
     } else if (a.state == QState.IDLE) {
       return Column(
         children: [
           ProgressBar(),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           QuestionContainer(qText: a.questionList[a.i].text),
         ],
       );
     }
-    return Text("Looks like our database has some errors! Don't worry we will fix it right away.");
+    return Text(
+        "Looks like our database has some errors! Don't worry we will fix it right away.");
   }
 
   @override
   Widget build(BuildContext context) {
     TextEditingController controller = new TextEditingController();
+    //var isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
+
 
     return Scaffold(
       appBar: AppBar(
@@ -46,40 +47,48 @@ class QuestionPage extends StatelessWidget {
       ),
       backgroundColor: Color.fromRGBO(240, 240, 240, 1),
       body: Center(
-        child: Container(
-          padding: EdgeInsets.only(top: 30, left: 30, right: 30, bottom: 20),
-          color: Colors.white,
-          width: MediaQuery.of(context).size.height * 0.8,
-          height: MediaQuery.of(context).size.height * 0.6,
-          child: Column(
-            
-            children: [
-              JumpingDotsProgressIndicator(
-                fontSize: 20.0,
+          child: Container(
+        padding: EdgeInsets.only(top: 30, left: 30, right: 30, bottom: 20),
+        color: Colors.white,
+        width: getWidth(context,MediaQuery.of(context).orientation ),
+        //height: MediaQuery.of(context).size.height * 0.5,
+        child: Column(
+          children: [
+            JumpingDotsProgressIndicator(
+              fontSize: 20.0,
+            ),
+            Consumer<questionModelView>(builder: (_, a, child) {
+              return getWidgetsByCondition(a);
+            }),
+            Container(
+              child: AnswerContainer(
+                controller: controller,
               ),
-              Consumer<questionModelView>(builder: (_, a, child) {
-                return getWidgetsByCondition(a);
-              }),
-              Container(
-                child: AnswerContainer(
-                  controller: controller,
-                ),
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  PreviousButton(),
+                  NextButton(),
+                ],
               ),
-              Container(
-                padding: EdgeInsets.only(top: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    PreviousButton(),
-                    NextButton(),
-                  ],
-                ),
-              )
-            ],
-          ),
-        )
-      ),
+            )
+          ],
+        ),
+      )),
     );
+
+    
+  }
+}
+
+double getWidth(BuildContext context,Orientation or) {
+  if(or == Orientation.portrait){
+      return MediaQuery.of(context).size.width;
+  }else{
+      return MediaQuery.of(context).size.width/2;
   }
 }
 

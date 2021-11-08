@@ -17,6 +17,10 @@ String addUser(
                 passw: "$password"
                 }
               )
+              {
+                users{name,surname,email,passw}
+              }
+
             }''';
 }
 

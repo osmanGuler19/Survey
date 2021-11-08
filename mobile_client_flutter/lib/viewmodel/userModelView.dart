@@ -32,14 +32,8 @@ class userModelView extends ChangeNotifier {
       GraphQLClient client = await getClient();
       print(client);
       final QueryResult result = await client.mutate(options);
-      print("result : " + result.data.toString());
-      _user = User.fromJson(result.data!['action']);
-      print("user things : " +
-          _user.email +
-          "  " +
-          _user.name +
-          "  " +
-          _user.surname);
+      //Getting the result. You have to watch out the return order and types. It changes with every query.
+      _user = User.fromJson(result.data!['createUsers']['users'][0]);
       notifyListeners();
       _state = QState.IDLE;
     } catch (e) {
@@ -57,6 +51,8 @@ class userModelView extends ChangeNotifier {
 
       GraphQLClient client = await getClient();
       final QueryResult result = await client.query(options);
+      print(result.data.toString());
+      _user = User.fromJson(result.data!['users'][0]);
       if (result.hasException) {
         _state = QState.ERROR;
         return null;
@@ -65,16 +61,7 @@ class userModelView extends ChangeNotifier {
         _state = QState.ERROR;
         return null;
       }
-      if (result.data!['getUser'] == null) {
-        _state = QState.ERROR;
-        return null;
-      }
-      if (result.data!['getUser']['user'] == null) {
-        _state = QState.ERROR;
-        return null;
-      }
-      _user = User.fromJson(result.data!['getUser']['user']);
-      _state = QState.DEFAULT;
+      _state = QState.IDLE;
       return _user;
     } catch (e) {
       print(e);

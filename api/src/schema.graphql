@@ -27,7 +27,6 @@ type Answer {
 }
 
 type User {
-  #id: ID!
   email: String
   name: String
   surname: String
@@ -36,7 +35,7 @@ type User {
 }
 
 type Survey {
-  id: ID!
+  #id: ID!
   title: String
   description: String
   answers: [Answer]
