@@ -13,24 +13,35 @@ class userModelView extends ChangeNotifier {
     _state = QState.IDLE;
   }
 
-  Future<void> AddUser(String email, String password, String fname, String lname) async {
+  Future<void> AddUser(
+      String email, String password, String fname, String lname) async {
     try {
+      print(addUser("osman", "guler", "opasdas", "asdasd"));
+      print(email + " " + password + " " + fname + " " + lname);
       QState.BUSY;
       final MutationOptions options = MutationOptions(
-          document: gql(addUser(fname, lname, email, password)
-          ),
-          variables: {
-            "name": fname,
-            "surname": lname,
-            "email": email,
-            "password": password,
-            
-          });
+        document: gql(addUser(fname, lname, email, password)),
+        variables: <String, dynamic>{
+          'email': email,
+          'passw': password,
+          'name': fname,
+          'surname': lname,
+        },
+      );
 
       GraphQLClient client = await getClient();
+      print(client);
       final QueryResult result = await client.mutate(options);
-      _user = User.fromJson(result.data!['addUser']);
+      print("result : " + result.data.toString());
+      _user = User.fromJson(result.data!['action']);
+      print("user things : " +
+          _user.email +
+          "  " +
+          _user.name +
+          "  " +
+          _user.surname);
       notifyListeners();
+      _state = QState.IDLE;
     } catch (e) {
       print(e);
       _state = QState.ERROR;
@@ -70,6 +81,5 @@ class userModelView extends ChangeNotifier {
       _state = QState.ERROR;
       return null;
     }
-    
   }
 }

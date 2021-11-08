@@ -6,14 +6,28 @@ type Question {
   order: Int
   text: String
   type: String
+  scope: [Scope] @relationship(type: "hasScope", direction: OUT)
+  component: [Component] @relationship(type: "hasComponent", direction: OUT)
+}
+
+type Scope {
+  id: ID!
+  label: String
+}
+
+type Component {
+  id: ID!
+  label: String
 }
 
 type Answer {
   order: Int
   response: String
+  survey: Survey @relationship(type: "hasAnswer", direction: IN)
 }
 
 type User {
+  #id: ID!
   email: String
   name: String
   surname: String
@@ -25,7 +39,7 @@ type Survey {
   id: ID!
   title: String
   description: String
-  questions: [Question]
+  answers: [Answer]
   created_at: DateTime
   updated_at: DateTime
   user: User

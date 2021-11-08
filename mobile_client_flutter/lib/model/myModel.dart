@@ -6,8 +6,8 @@ class User {
   String name;
   String surname;
   String email;
-
-  User({required this.name, required this.surname, required this.email});
+  String passw;
+  User({required this.name, required this.surname, required this.email, required this.passw});
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
   Map<String, dynamic> toJson() => _$UserToJson(this);

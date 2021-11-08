@@ -41,7 +41,7 @@ class SignInButton extends StatelessWidget {
             vm.AddUser(emailController.text, passwordController.text,nameController.text, lastNameController.text);
 
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Center(child: Text('Signed in successfully!')),
+              content: Text('Signed in successfully!'),
             ));
 
           }
