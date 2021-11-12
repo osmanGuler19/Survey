@@ -11,12 +11,12 @@ type Question {
 }
 
 type Scope {
-  id: ID!
+  scope_id: ID!
   label: String
 }
 
 type Component {
-  id: ID!
+  component_id: ID!
   label: String
 }
 
@@ -31,17 +31,17 @@ type User {
   name: String
   surname: String
   passw: String
-  #surveys: [Survey]
+  surveys: [Survey]
 }
 
 type Survey {
-  #id: ID!
+  survey_id: ID!
   title: String
   description: String
   answers: [Answer]
   created_at: DateTime
   updated_at: DateTime
-  user: User
+  user: User @relationship(type: "hasSurvey", direction: IN)
 }
 
 #type Mutation {}

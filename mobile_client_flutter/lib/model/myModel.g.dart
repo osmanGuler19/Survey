@@ -20,6 +20,38 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'passw': instance.passw,
     };
 
+Survey _$SurveyFromJson(Map<String, dynamic> json) => Survey(
+      id: json['id'] as String,
+      title: json['title'] as String,
+      answers: (json['answers'] as List<dynamic>)
+          .map((e) => Answer.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      created_at: DateTime.parse(json['created_at'] as String),
+      updated_at: DateTime.parse(json['updated_at'] as String),
+      user: User.fromJson(json['user'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$SurveyToJson(Survey instance) => <String, dynamic>{
+      'id': instance.id,
+      'title': instance.title,
+      'answers': instance.answers,
+      'created_at': instance.created_at.toIso8601String(),
+      'updated_at': instance.updated_at.toIso8601String(),
+      'user': instance.user,
+    };
+
+Answer _$AnswerFromJson(Map<String, dynamic> json) => Answer(
+      order: json['order'] as int,
+      response: json['response'] as String,
+      survey: Survey.fromJson(json['survey'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$AnswerToJson(Answer instance) => <String, dynamic>{
+      'order': instance.order,
+      'response': instance.response,
+      'survey': instance.survey,
+    };
+
 Question _$QuestionFromJson(Map<String, dynamic> json) => Question(
       order: json['order'] as int,
       text: json['text'] as String,

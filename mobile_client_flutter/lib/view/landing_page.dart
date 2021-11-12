@@ -10,13 +10,7 @@ class LandingPage extends StatelessWidget {
     return MaterialApp(
       title: 'Responsibility Matrix',
       home: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-            colors: [Color.fromRGBO(134, 147, 171, 1),Color.fromRGBO(189, 212, 231, 1)]
-          ),
-        ),
+        
         child: Scaffold(
           backgroundColor: Colors.transparent,
           body: SingleChildScrollView(

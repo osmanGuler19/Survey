@@ -7,10 +7,50 @@ class User {
   String surname;
   String email;
   String passw;
-  User({required this.name, required this.surname, required this.email, required this.passw});
+
+  User(
+      {required this.name,
+      required this.surname,
+      required this.email,
+      required this.passw});
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
   Map<String, dynamic> toJson() => _$UserToJson(this);
+}
+
+@JsonSerializable()
+class Survey {
+  String id;
+  String title;
+  List<Answer> answers;
+  DateTime created_at;
+  DateTime updated_at;
+  User user;
+
+  Survey(
+      {required this.id,
+      required this.title,
+      required this.answers,
+      required this.created_at,
+      required this.updated_at,
+      required this.user});
+  factory Survey.fromJson(Map<String, dynamic> json) => _$SurveyFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SurveyToJson(this);
+
+}
+
+@JsonSerializable()
+class Answer {
+  int order;
+  String response;
+  Survey survey;
+
+  Answer({required this.order, required this.response, required this.survey});
+
+  factory Answer.fromJson(Map<String, dynamic> json) => _$AnswerFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AnswerToJson(this);
 }
 
 @JsonSerializable()

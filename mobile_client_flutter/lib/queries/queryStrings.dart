@@ -24,19 +24,41 @@ String addUser(
             }''';
 }
 
-
-String getUserByEmail(String email,String password) {
+String getUserByEmail(String email, String password) {
   return """query{users(where:{email:"$email",passw:"$password"}){name,surname,email,passw}}""";
 }
 
-String addSurvey(String title, String description, String userId,List Questions) {
-  return """mutation AddSurvey($title:String,$description:String,$userId:String){
-          addSurvey(input: {title:$title,description:$description,userId:$userId,questions:$Questions}){
-            id
-            title
-            description
-            userId
-            questions
-          }
-        }""";
+String addSurvey(String id, String title, String description, String createdAt,
+    String updatedAt, String userEmail) {
+  return """mutation{
+              createSurveys(
+                input: {
+                  survey_id : "$id"
+                  title: "$title"
+                  description : "$description"
+                  created_at : "$createdAt"
+                  updated_at : "$updatedAt"
+                  user: {connect: {where:{email:"$userEmail"}}}
+                  
+                }
+              )
+                {
+                  surveys{id,title,description,created_at,updated_at,user{email,name,surname,passw}}
+                }
+            }""";
+}
+
+String addAnswer(int order, String response, String surveyId) {
+  return """mutation{
+              createAnswers(
+                input: {
+                  order: $order
+                  response:"$response"
+                  survey : {connect:{where:{survey_id:"$surveyId"}}}
+                }
+              )
+                {
+                  answers{order,response,survey{survey_id,title,description}}
+                }
+            }""";
 }
