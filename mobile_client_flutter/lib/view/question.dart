@@ -1,4 +1,4 @@
-import 'package:client_flutter/viewmodel/questionModelView.dart';
+import 'package:client_flutter/viewmodel/questionViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:progress_indicators/progress_indicators.dart';
@@ -7,16 +7,16 @@ import '../widgets/question_page/questionContainer.dart';
 import '../widgets/question_page/answerContainer.dart';
 import '../widgets/question_page/nextButton.dart';
 import '../widgets/question_page/previousButton.dart';
-import '../viewmodel/questionModelView.dart';
+import '../viewmodel/questionViewModel.dart';
 import 'package:provider/provider.dart';
-import '../../viewmodel/userModelView.dart';
+import '../viewmodel/userViewModel.dart';
 
 class QuestionPage extends StatelessWidget {
   //final List qList = new myModelView().questionList;
 
   const QuestionPage({Key? key}) : super(key: key);
 
-  Widget getWidgetsByCondition(QuestionModelView a) {
+  Widget getWidgetsByCondition(QuestionViewModel a) {
     if (a.state == QState.BUSY) {
       return Column(
         children: [SizedBox(), CircularProgressIndicator(), SizedBox()],
@@ -39,7 +39,7 @@ class QuestionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController controller = new TextEditingController();
-    final vm = Provider.of<UserModelView>(context);
+    final vm = Provider.of<UserViewModel>(context);
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text("Question Survey")),
@@ -58,7 +58,7 @@ class QuestionPage extends StatelessWidget {
             JumpingDotsProgressIndicator(
               fontSize: 20.0,
             ),
-            Consumer<QuestionModelView>(builder: (_, a, child) {
+            Consumer<QuestionViewModel>(builder: (_, a, child) {
               return getWidgetsByCondition(a);
             }),
             Container(
@@ -72,7 +72,7 @@ class QuestionPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   PreviousButton(),
-                  NextButton(),
+                  NextButton(controller: controller,),
                 ],
               ),
             )

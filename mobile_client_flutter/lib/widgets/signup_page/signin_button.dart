@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../viewmodel/userModelView.dart';
+import '../../viewmodel/UserModelView.dart';
 import 'package:provider/provider.dart';
 
 class SignInButton extends StatelessWidget {
@@ -20,7 +20,7 @@ class SignInButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final vm = Provider.of<userModelView>(context);
+    final vm = Provider.of<UserModelView>(context);
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 16.0),
       child: ElevatedButton(

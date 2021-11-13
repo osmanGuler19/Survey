@@ -10,7 +10,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 
 enum QState { IDLE, BUSY, ERROR, DEFAULT }
 
-class QuestionModelView extends ChangeNotifier {
+class QuestionViewModel extends ChangeNotifier {
   late QState _state;
 
   late List<Question> questionList;

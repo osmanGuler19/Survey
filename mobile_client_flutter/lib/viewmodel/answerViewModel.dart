@@ -12,13 +12,20 @@ class AnswerViewModel extends ChangeNotifier {
   int answerOrder = 0;
   late Answer answer;
   late AState _state;
+  late List<Answer> answers;
   AnswerViewModel() {
+    answers = [];
     _state = AState.DEFAULT;
   }
 
   void setState(AState state) {
     this._state = state;
     notifyListeners();
+  }
+
+  void addAnswerToList(Answer ans) {
+    answers.add(ans);
+    answerOrder++;
   }
 
   AState getState() {

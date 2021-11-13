@@ -1,7 +1,7 @@
-import 'package:client_flutter/viewmodel/questionModelView.dart';
-import 'package:client_flutter/viewmodel/userModelView.dart';
-import 'package:client_flutter/viewmodel/answerModelView.dart';
-import 'package:client_flutter/viewmodel/surveyModelView.dart';
+import 'package:client_flutter/viewmodel/questionViewModel.dart';
+import 'package:client_flutter/viewmodel/userViewModel.dart';
+import 'package:client_flutter/viewmodel/answerViewModel.dart';
+import 'package:client_flutter/viewmodel/surveyViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:client_flutter/services/gql.dart';
@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<QuestionModelView>(create: (_) => QuestionModelView()),
-        ChangeNotifierProvider<UserModelView>(create: (_) => UserModelView()),
+        ChangeNotifierProvider<QuestionViewModel>(create: (_) => QuestionViewModel()),
+        ChangeNotifierProvider<UserViewModel>(create: (_) => UserViewModel()),
         ChangeNotifierProvider<AnswerViewModel>(create: (_) => AnswerViewModel()),
         ChangeNotifierProvider<SurveyViewModel>(create: (_) => SurveyViewModel()),
       ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../viewmodel/questionModelView.dart';
+import '../../viewmodel/questionViewModel.dart';
 import 'package:marquee/marquee.dart';
 
 
@@ -9,7 +9,7 @@ class QuestionContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List qList = new QuestionModelView().questionList;
+    //final List qList = new QuestionViewModel().questionList;
     return Container(
       height: 200,
       child: Expanded(

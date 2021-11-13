@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../viewmodel/userModelView.dart';
+import '../../viewmodel/userViewModel.dart';
 import '../../model/myModel.dart';
 import '../../view/question.dart';
 
@@ -16,7 +16,7 @@ class UserLoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final vm = Provider.of<UserModelView>(context);
+    final vm = Provider.of<UserViewModel>(context);
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 16.0),
       child: ElevatedButton(
