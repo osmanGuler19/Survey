@@ -7,7 +7,7 @@ class PreviousButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final vm = Provider.of<questionModelView>(context);
+    final vm = Provider.of<QuestionModelView>(context);
     return ElevatedButton(
       onPressed: () {
         vm.preQuestion();

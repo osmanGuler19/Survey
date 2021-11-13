@@ -9,7 +9,7 @@ class NextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final vm = Provider.of<questionModelView>(context);
+    final vm = Provider.of<QuestionModelView>(context);
     String isLast(){
     if(vm.isLastQuestion()){
       return "Submit";

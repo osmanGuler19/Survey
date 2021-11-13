@@ -8,7 +8,7 @@ class ProgressBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final vm = Provider.of<questionModelView>(context);
+    final vm = Provider.of<QuestionModelView>(context);
     var val;
     if (vm.questionList.length > 0) {
       val = (vm.i * 100) ~/ vm.questionList.length;

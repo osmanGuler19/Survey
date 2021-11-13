@@ -6,7 +6,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 
 enum UState { IDLE, BUSY, ERROR, DEFAULT }
 
-class userModelView extends ChangeNotifier {
+class UserModelView extends ChangeNotifier {
   late User user;
   late UState _state;
   userModelView() {

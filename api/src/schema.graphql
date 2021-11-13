@@ -11,12 +11,12 @@ type Question {
 }
 
 type Scope {
-  scope_id: ID!
+  id: ID!
   label: String
 }
 
 type Component {
-  component_id: ID!
+  id: ID!
   label: String
 }
 

@@ -21,7 +21,7 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
     };
 
 Survey _$SurveyFromJson(Map<String, dynamic> json) => Survey(
-      id: json['id'] as String,
+      survey_id: json['survey_id'] as String,
       title: json['title'] as String,
       answers: (json['answers'] as List<dynamic>)
           .map((e) => Answer.fromJson(e as Map<String, dynamic>))
@@ -32,7 +32,7 @@ Survey _$SurveyFromJson(Map<String, dynamic> json) => Survey(
     );
 
 Map<String, dynamic> _$SurveyToJson(Survey instance) => <String, dynamic>{
-      'id': instance.id,
+      'survey_id': instance.survey_id,
       'title': instance.title,
       'answers': instance.answers,
       'created_at': instance.created_at.toIso8601String(),

@@ -1,5 +1,7 @@
 import 'package:client_flutter/viewmodel/questionModelView.dart';
 import 'package:client_flutter/viewmodel/userModelView.dart';
+import 'package:client_flutter/viewmodel/answerModelView.dart';
+import 'package:client_flutter/viewmodel/surveyModelView.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:client_flutter/services/gql.dart';
@@ -18,8 +20,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<questionModelView>(create: (_) => questionModelView()),
-        ChangeNotifierProvider<userModelView>(create: (_) => userModelView()),
+        ChangeNotifierProvider<QuestionModelView>(create: (_) => QuestionModelView()),
+        ChangeNotifierProvider<UserModelView>(create: (_) => UserModelView()),
+        ChangeNotifierProvider<AnswerViewModel>(create: (_) => AnswerViewModel()),
+        ChangeNotifierProvider<SurveyViewModel>(create: (_) => SurveyViewModel()),
       ],
       child: MaterialApp(
         title: 'GrandStack Flutter',

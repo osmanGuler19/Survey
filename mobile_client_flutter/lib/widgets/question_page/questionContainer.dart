@@ -9,7 +9,7 @@ class QuestionContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List qList = new questionModelView().questionList;
+    final List qList = new QuestionModelView().questionList;
     return Container(
       height: 200,
       child: Expanded(

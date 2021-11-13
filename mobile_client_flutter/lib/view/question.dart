@@ -16,7 +16,7 @@ class QuestionPage extends StatelessWidget {
 
   const QuestionPage({Key? key}) : super(key: key);
 
-  Widget getWidgetsByCondition(questionModelView a) {
+  Widget getWidgetsByCondition(QuestionModelView a) {
     if (a.state == QState.BUSY) {
       return Column(
         children: [SizedBox(), CircularProgressIndicator(), SizedBox()],
@@ -39,7 +39,7 @@ class QuestionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController controller = new TextEditingController();
-    final vm = Provider.of<userModelView>(context);
+    final vm = Provider.of<UserModelView>(context);
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text("Question Survey")),
@@ -58,7 +58,7 @@ class QuestionPage extends StatelessWidget {
             JumpingDotsProgressIndicator(
               fontSize: 20.0,
             ),
-            Consumer<questionModelView>(builder: (_, a, child) {
+            Consumer<QuestionModelView>(builder: (_, a, child) {
               return getWidgetsByCondition(a);
             }),
             Container(

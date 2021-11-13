@@ -20,7 +20,7 @@ class User {
 
 @JsonSerializable()
 class Survey {
-  String id;
+  String survey_id;
   String title;
   List<Answer> answers;
   DateTime created_at;
@@ -28,7 +28,7 @@ class Survey {
   User user;
 
   Survey(
-      {required this.id,
+      {required this.survey_id,
       required this.title,
       required this.answers,
       required this.created_at,
