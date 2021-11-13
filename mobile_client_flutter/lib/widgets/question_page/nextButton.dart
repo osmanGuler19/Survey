@@ -3,20 +3,18 @@ import '../../viewmodel/questionModelView.dart';
 import 'package:provider/provider.dart';
 
 class NextButton extends StatelessWidget {
-  
-  const NextButton({Key? key})
-      : super(key: key);
+  final TextEditingController controller;
+  const NextButton({Key? key, required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final vm = Provider.of<QuestionModelView>(context);
-    String isLast(){
-    if(vm.isLastQuestion()){
-      return "Submit";
-    }
-    else{
-      return "Next";
-    }
+    String isLast() {
+      if (vm.isLastQuestion()) {
+        return "Submit";
+      } else {
+        return "Next";
+      }
     }
 
     return ElevatedButton(
@@ -35,4 +33,3 @@ class NextButton extends StatelessWidget {
     );
   }
 }
-
