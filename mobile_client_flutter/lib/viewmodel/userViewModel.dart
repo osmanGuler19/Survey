@@ -8,9 +8,9 @@ enum UState { IDLE, BUSY, ERROR, DEFAULT }
 
 class UserViewModel extends ChangeNotifier {
   late User user;
-  late UState _state;
+  late UState u_state;
   userModelView() {
-    _state = UState.IDLE;
+    u_state = UState.IDLE;
   }
 
   Future<void> AddUser(
@@ -18,7 +18,7 @@ class UserViewModel extends ChangeNotifier {
     try {
       print(addUser("osman", "guler", "opasdas", "asdasd"));
       print(email + " " + password + " " + fname + " " + lname);
-      UState.BUSY;
+      u_state = UState.BUSY;
       final MutationOptions options = MutationOptions(
         document: gql(addUser(fname, lname, email, password)),
         variables: <String, dynamic>{
@@ -35,16 +35,16 @@ class UserViewModel extends ChangeNotifier {
       //Getting the result. You have to watch out the return order and types. It changes with every query.
       user = User.fromJson(result.data!['createUsers']['users'][0]);
       notifyListeners();
-      _state = UState.IDLE;
+      u_state = UState.IDLE;
     } catch (e) {
       print(e);
-      _state = UState.ERROR;
+      u_state = UState.ERROR;
     }
   }
 
   Future<User?> getUser(String email, String password) async {
     try {
-      UState.BUSY;
+      u_state=UState.BUSY;
       final QueryOptions options = QueryOptions(
           document: gql(getUserByEmail(email, password)),
           fetchPolicy: FetchPolicy.networkOnly);
@@ -54,18 +54,18 @@ class UserViewModel extends ChangeNotifier {
       print(result.data.toString());
       user = User.fromJson(result.data!['users'][0]);
       if (result.hasException) {
-        _state = UState.ERROR;
+        u_state = UState.ERROR;
         return null;
       }
       if (result.data == null) {
-        _state = UState.ERROR;
+        u_state = UState.ERROR;
         return null;
       }
-      _state = UState.IDLE;
+      u_state = UState.IDLE;
       return user;
     } catch (e) {
       print(e);
-      _state = UState.ERROR;
+      u_state = UState.ERROR;
       return null;
     }
   }

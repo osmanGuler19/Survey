@@ -23,20 +23,24 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
 Survey _$SurveyFromJson(Map<String, dynamic> json) => Survey(
       survey_id: json['survey_id'] as String,
       title: json['title'] as String,
-      answers: (json['answers'] as List<dynamic>)
-          .map((e) => Answer.fromJson(e as Map<String, dynamic>))
+      description: json['description'] as String,
+      answers: (json['answers'] as List<dynamic>?)
+          ?.map((e) => Answer.fromJson(e as Map<String, dynamic>))
           .toList(),
       created_at: DateTime.parse(json['created_at'] as String),
-      updated_at: DateTime.parse(json['updated_at'] as String),
+      updated_at: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
       user: User.fromJson(json['user'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$SurveyToJson(Survey instance) => <String, dynamic>{
       'survey_id': instance.survey_id,
       'title': instance.title,
+      'description': instance.description,
       'answers': instance.answers,
       'created_at': instance.created_at.toIso8601String(),
-      'updated_at': instance.updated_at.toIso8601String(),
+      'updated_at': instance.updated_at?.toIso8601String(),
       'user': instance.user,
     };
 

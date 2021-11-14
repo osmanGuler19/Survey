@@ -11,15 +11,15 @@ enum AState { IDLE, BUSY, ERROR, DEFAULT }
 class AnswerViewModel extends ChangeNotifier {
   int answerOrder = 0;
   late Answer answer;
-  late AState _state;
+  late AState a_state;
   late List<Answer> answers;
   AnswerViewModel() {
     answers = [];
-    _state = AState.DEFAULT;
+    this.a_state = AState.DEFAULT;
   }
 
   void setState(AState state) {
-    this._state = state;
+    this.a_state = state;
     notifyListeners();
   }
 
@@ -29,7 +29,7 @@ class AnswerViewModel extends ChangeNotifier {
   }
 
   AState getState() {
-    return this._state;
+    return this.a_state;
   }
 
   Future<void> AddAnswer(int order, String response, Survey survey) async {
@@ -50,7 +50,7 @@ class AnswerViewModel extends ChangeNotifier {
       answer = Answer.fromJson(result.data!['createAnswers']['answers'][0]);
     } catch (e) {
       print(e);
-      _state = AState.ERROR;
+      a_state = AState.ERROR;
     }
   }
 }

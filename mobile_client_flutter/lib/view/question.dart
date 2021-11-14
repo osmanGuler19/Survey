@@ -12,16 +12,16 @@ import 'package:provider/provider.dart';
 import '../viewmodel/userViewModel.dart';
 
 class QuestionPage extends StatelessWidget {
-  //final List qList = new myModelView().questionList;
+  
 
   const QuestionPage({Key? key}) : super(key: key);
 
   Widget getWidgetsByCondition(QuestionViewModel a) {
-    if (a.state == QState.BUSY) {
+    if (a.q_state == QState.BUSY) {
       return Column(
         children: [SizedBox(), CircularProgressIndicator(), SizedBox()],
       );
-    } else if (a.state == QState.IDLE) {
+    } else if (a.q_state == QState.IDLE) {
       return Column(
         children: [
           ProgressBar(),

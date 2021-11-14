@@ -22,17 +22,19 @@ class User {
 class Survey {
   String survey_id;
   String title;
-  List<Answer> answers;
+  String description;
+  List<Answer>? answers;
   DateTime created_at;
-  DateTime updated_at;
+  DateTime? updated_at;
   User user;
 
   Survey(
       {required this.survey_id,
       required this.title,
-      required this.answers,
+      required this.description,
+      this.answers,
       required this.created_at,
-      required this.updated_at,
+      this.updated_at,
       required this.user});
   factory Survey.fromJson(Map<String, dynamic> json) => _$SurveyFromJson(json);
 

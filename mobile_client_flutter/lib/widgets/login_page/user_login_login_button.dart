@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../viewmodel/userViewModel.dart';
+import '../../viewmodel/surveyViewModel.dart';
 import '../../model/myModel.dart';
 import '../../view/question.dart';
+import '../../constants/strings.dart';
 
 class UserLoginButton extends StatelessWidget {
   final TextEditingController emailController;
@@ -17,6 +19,7 @@ class UserLoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final vm = Provider.of<UserViewModel>(context);
+    final vms = Provider.of<SurveyViewModel>(context);
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 16.0),
       child: ElevatedButton(
@@ -26,8 +29,21 @@ class UserLoginButton extends StatelessWidget {
               await vm.getUser(emailController.text, passwordController.text);
 
           if (user != null) {
-            Navigator.push(
-                context,
+            vm.user = user;
+            vms.survey = await new Survey(
+                survey_id: vm.user.email + "--" + DateTime.now().toString(),
+                title: survey_title,
+                description: survey_description,
+                created_at: DateTime.now(),
+                user: vm.user);
+
+            vms.AddSurveyWithoutAnswers(
+                vm.user.email + "--" + DateTime.now().toString(),
+                survey_title,
+                survey_description,
+                DateTime.now(),
+                vm.user);
+            Navigator.push(context,
                 MaterialPageRoute(builder: (context) => QuestionPage()));
           }
         },

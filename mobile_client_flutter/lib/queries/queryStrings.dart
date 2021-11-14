@@ -48,6 +48,25 @@ String addSurvey(String id, String title, String description, String createdAt,
             }""";
 }
 
+String addSurveyWithoutAnswers(String id, String title, String description, String createdAt, String userEmail) {
+  return """mutation{
+              createSurveys(
+                input: {
+                  survey_id : "$id"
+                  title: "$title"
+                  description : "$description"
+                  created_at : "$createdAt"
+                  user: {connect: {where:{email:"$userEmail"}}}
+                  
+                }
+              )
+                {
+                  surveys{id,title,description,created_at,updated_at,user{email,name,surname,passw}}
+                }
+            }""";
+}
+
+
 String addAnswer(int order, String response, String surveyId) {
   return """mutation{
               createAnswers(
@@ -59,6 +78,21 @@ String addAnswer(int order, String response, String surveyId) {
               )
                 {
                   answers{order,response,survey{survey_id,title,description}}
+                }
+            }""";
+}
+
+String updateSurvey(String survey_id, DateTime updatedAt, List answers){
+  return """mutation{
+              updateSurveys(
+                where:{survey_id:"$survey_id"}
+                update:{
+                  updated_at:"$updatedAt"
+                  answers:{update:[${answers.map((answer) => '{where:{order:${answer.order}}}').toList()}]}
+                }
+              )
+                {
+                  surveys{id,title,description,created_at,updated_at,user{email,name,surname,passw}}
                 }
             }""";
 }

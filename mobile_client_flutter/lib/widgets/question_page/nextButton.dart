@@ -1,6 +1,8 @@
+import 'package:client_flutter/model/myModel.dart';
 import 'package:flutter/material.dart';
 import '../../viewmodel/questionViewModel.dart';
 import '../../viewmodel/answerViewModel.dart';
+import '../../viewmodel/surveyViewModel.dart';
 import 'package:provider/provider.dart';
 
 class NextButton extends StatelessWidget {
@@ -11,6 +13,7 @@ class NextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final vm = Provider.of<QuestionViewModel>(context);
     final vma = Provider.of<AnswerViewModel>(context);
+    final vms = Provider.of<SurveyViewModel>(context);
     String isLast() {
       if (vm.isLastQuestion()) {
         return "Submit";
@@ -22,9 +25,19 @@ class NextButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: () async {
         if (vm.isLastQuestion()) {
-          
+          for(int i =0;i<vma.answers.length;i++){
+            await vma.AddAnswer(vma.answerOrder, vma.answers[i].response,vms.survey);
+          }
+
+        } else {
+          Answer ans = new Answer(
+              order: vma.answerOrder,
+              response: controller.text,
+              survey: vms.survey);
+          vma.addAnswerToList(ans);
+          vm.nextQuestion();
+          controller.clear();
         }
-        vm.nextQuestion();
       },
       child: Text(
         isLast(),
