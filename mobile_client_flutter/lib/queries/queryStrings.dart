@@ -67,13 +67,14 @@ String addSurveyWithoutAnswers(String id, String title, String description, Stri
 }
 
 
-String addAnswer(int order, String response, String surveyId) {
+String addAnswer(int order, String response, String surveyId, String questionText) {
   return """mutation{
-              createAnswers(
+	            createAnswers(
                 input: {
                   order: $order
                   response:"$response"
                   survey : {connect:{where:{survey_id:"$surveyId"}}}
+                  responseTo : {connect:{where:{text:"$questionText"}}}
                 }
               )
                 {

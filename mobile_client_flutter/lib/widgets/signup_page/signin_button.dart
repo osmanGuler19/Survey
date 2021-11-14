@@ -45,6 +45,8 @@ class SignInButton extends StatelessWidget {
               content: Text('Signed in successfully!'),
             ));
 
+             Navigator.of(context).pop();
+
           }
         },
         child: Text(

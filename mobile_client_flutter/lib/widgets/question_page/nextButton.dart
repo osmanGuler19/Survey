@@ -14,6 +14,7 @@ class NextButton extends StatelessWidget {
     final vm = Provider.of<QuestionViewModel>(context);
     final vma = Provider.of<AnswerViewModel>(context);
     final vms = Provider.of<SurveyViewModel>(context);
+    final vmq = Provider.of<QuestionViewModel>(context);
     String isLast() {
       if (vm.isLastQuestion()) {
         return "Submit";
@@ -32,7 +33,7 @@ class NextButton extends StatelessWidget {
 
         if (vm.isLastQuestion()) {
           for(int i =0;i<vma.answers.length;i++){
-            await vma.AddAnswer(vma.answerOrder, vma.answers[i].response,vms.survey);
+            await vma.AddAnswer(vma.answerOrder, vma.answers[i].response,vms.survey,vmq.questionList[i]);
           }
         } else {
           vm.nextQuestion();

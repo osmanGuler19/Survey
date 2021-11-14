@@ -24,6 +24,7 @@ type Answer {
   order: Int
   response: String
   survey: Survey @relationship(type: "hasAnswer", direction: IN)
+  responseTo: Question @relationship(type: "hasResponse", direction: IN)
 }
 
 type User {
