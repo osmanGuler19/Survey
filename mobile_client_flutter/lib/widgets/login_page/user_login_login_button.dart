@@ -30,14 +30,14 @@ class UserLoginButton extends StatelessWidget {
 
           if (user != null) {
             vm.user = user;
-            vms.survey = await new Survey(
+            vms.survey = new Survey(
                 survey_id: vm.user.email + "--" + DateTime.now().toString(),
                 title: survey_title,
                 description: survey_description,
                 created_at: DateTime.now(),
                 user: vm.user);
-
-            vms.AddSurveyWithoutAnswers(
+            print(vms.survey.survey_id);
+            await vms.AddSurveyWithoutAnswers(
                 vm.user.email + "--" + DateTime.now().toString(),
                 survey_title,
                 survey_description,

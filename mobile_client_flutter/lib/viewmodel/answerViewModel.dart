@@ -10,12 +10,18 @@ enum AState { IDLE, BUSY, ERROR, DEFAULT }
 
 class AnswerViewModel extends ChangeNotifier {
   int answerOrder = 0;
+  int ind = 0;
   late Answer answer;
   late AState a_state;
   late List<Answer> answers;
   AnswerViewModel() {
     answers = [];
     this.a_state = AState.DEFAULT;
+  }
+
+  void increaseInd() {
+    ind++;
+    notifyListeners();
   }
 
   void setState(AState state) {
@@ -33,6 +39,7 @@ class AnswerViewModel extends ChangeNotifier {
   }
 
   Future<void> AddAnswer(int order, String response, Survey survey) async {
+    print(survey.survey_id);
     try {
       setState(AState.BUSY);
       final MutationOptions options = MutationOptions(
@@ -47,7 +54,9 @@ class AnswerViewModel extends ChangeNotifier {
         print(result.exception.toString());
         setState(AState.ERROR);
       }
-      answer = Answer.fromJson(result.data!['createAnswers']['answers'][0]);
+      //Don't need query result
+      //answers[ind] =Answer.fromJson(result.data!['createAnswers']['answers'][0]);
+      increaseInd();
     } catch (e) {
       print(e);
       a_state = AState.ERROR;

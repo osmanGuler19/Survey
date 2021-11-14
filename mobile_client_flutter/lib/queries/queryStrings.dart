@@ -61,7 +61,7 @@ String addSurveyWithoutAnswers(String id, String title, String description, Stri
                 }
               )
                 {
-                  surveys{id,title,description,created_at,updated_at,user{email,name,surname,passw}}
+                  surveys{survey_id,title,description,created_at,updated_at,user{email,name,surname,passw}}
                 }
             }""";
 }
@@ -82,6 +82,21 @@ String addAnswer(int order, String response, String surveyId) {
             }""";
 }
 
+
+String updateSurveyTime(String survey_id, DateTime updatedAt){
+  return """mutation{
+              updateSurveys(
+                where:{survey_id:"$survey_id"}
+                update:{
+                  updated_at:"$updatedAt"
+                }
+              )
+                {
+                  surveys{survey_id,title,description,created_at,updated_at,user{email,name,surname,passw}}
+                }
+            }""";
+}
+
 String updateSurvey(String survey_id, DateTime updatedAt, List answers){
   return """mutation{
               updateSurveys(
@@ -92,7 +107,7 @@ String updateSurvey(String survey_id, DateTime updatedAt, List answers){
                 }
               )
                 {
-                  surveys{id,title,description,created_at,updated_at,user{email,name,surname,passw}}
+                  surveys{survey_id,title,description,created_at,updated_at,user{email,name,surname,passw}}
                 }
             }""";
 }

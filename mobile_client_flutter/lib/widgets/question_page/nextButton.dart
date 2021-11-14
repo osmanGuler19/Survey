@@ -24,17 +24,17 @@ class NextButton extends StatelessWidget {
 
     return ElevatedButton(
       onPressed: () async {
+        Answer ans = new Answer(
+              order: vma.answerOrder,
+              response: controller.text,
+              survey: vms.survey);
+        vma.addAnswerToList(ans);
+
         if (vm.isLastQuestion()) {
           for(int i =0;i<vma.answers.length;i++){
             await vma.AddAnswer(vma.answerOrder, vma.answers[i].response,vms.survey);
           }
-
         } else {
-          Answer ans = new Answer(
-              order: vma.answerOrder,
-              response: controller.text,
-              survey: vms.survey);
-          vma.addAnswerToList(ans);
           vm.nextQuestion();
           controller.clear();
         }
