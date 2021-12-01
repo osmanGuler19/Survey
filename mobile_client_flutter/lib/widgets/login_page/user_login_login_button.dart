@@ -4,6 +4,7 @@ import '../../viewmodel/userViewModel.dart';
 import '../../viewmodel/surveyViewModel.dart';
 import '../../model/myModel.dart';
 import '../../view/question.dart';
+import '../../view/user_landing.dart';
 import '../../constants/strings.dart';
 
 class UserLoginButton extends StatelessWidget {
@@ -29,6 +30,9 @@ class UserLoginButton extends StatelessWidget {
               await vm.getUser(emailController.text, passwordController.text);
 
           if (user != null) {
+
+            // Don't delete this line.
+            /*
             vm.user = user;
             vms.survey = new Survey(
                 survey_id: vm.user.email + "--" + DateTime.now().toString(),
@@ -43,8 +47,9 @@ class UserLoginButton extends StatelessWidget {
                 survey_description,
                 DateTime.now(),
                 vm.user);
+                */
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => QuestionPage()));
+                MaterialPageRoute(builder: (context) => UserLandingPage()));
           }
         },
         child: Text(

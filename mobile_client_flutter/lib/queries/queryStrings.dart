@@ -48,7 +48,8 @@ String addSurvey(String id, String title, String description, String createdAt,
             }""";
 }
 
-String addSurveyWithoutAnswers(String id, String title, String description, String createdAt, String userEmail) {
+String addSurveyWithoutAnswers(String id, String title, String description,
+    String createdAt, String userEmail) {
   return """mutation{
               createSurveys(
                 input: {
@@ -66,8 +67,8 @@ String addSurveyWithoutAnswers(String id, String title, String description, Stri
             }""";
 }
 
-
-String addAnswer(int order, String response, String surveyId, String questionText) {
+String addAnswer(
+    int order, String response, String surveyId, String questionText) {
   return """mutation{
 	            createAnswers(
                 input: {
@@ -83,8 +84,7 @@ String addAnswer(int order, String response, String surveyId, String questionTex
             }""";
 }
 
-
-String updateSurveyTime(String survey_id, DateTime updatedAt){
+String updateSurveyTime(String survey_id, DateTime updatedAt) {
   return """mutation{
               updateSurveys(
                 where:{survey_id:"$survey_id"}
@@ -98,7 +98,7 @@ String updateSurveyTime(String survey_id, DateTime updatedAt){
             }""";
 }
 
-String updateSurvey(String survey_id, DateTime updatedAt, List answers){
+String updateSurvey(String survey_id, DateTime updatedAt, List answers) {
   return """mutation{
               updateSurveys(
                 where:{survey_id:"$survey_id"}
@@ -110,5 +110,11 @@ String updateSurvey(String survey_id, DateTime updatedAt, List answers){
                 {
                   surveys{survey_id,title,description,created_at,updated_at,user{email,name,surname,passw}}
                 }
+            }""";
+}
+
+String getUsersSurveys(String userEmail) {
+  return """query{
+              surveys(where:{user:{email:"$userEmail"}}){survey_id,title,description,created_at,updated_at,user{email,name,surname,passw}}
             }""";
 }
