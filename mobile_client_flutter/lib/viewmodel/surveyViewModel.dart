@@ -12,7 +12,7 @@ class SurveyViewModel extends ChangeNotifier {
   int answerOrder = 0;
   late Survey survey;
   late S_State s_state;
-  late List userSurveys;
+  late List<Survey> userSurveys;
 
   SurveyViewModel() {
     s_state = S_State.DEFAULT;
@@ -28,7 +28,7 @@ class SurveyViewModel extends ChangeNotifier {
     return this.s_state;
   }
 
-  Future<List<Survey>> getUserSurveys(String user_email) async {
+  Future<void> getUserSurveys(String user_email) async {
     try {
       setState(S_State.BUSY);
       final QueryOptions options = QueryOptions(
@@ -46,11 +46,11 @@ class SurveyViewModel extends ChangeNotifier {
         userSurveys.add(temp);
       }
       notifyListeners();
-      return surveys;
+      //return surveys;
     } catch (e) {
       print(e);
       setState(S_State.ERROR);
-      return [];
+      //return [];
     }
   }
 
@@ -80,6 +80,28 @@ class SurveyViewModel extends ChangeNotifier {
         setState(S_State.ERROR);
       }
       survey = Survey.fromJson(result.data!['createSurveys']['surveys'][0]);
+    } catch (e) {
+      print(e);
+      s_state = S_State.ERROR;
+    }
+  }
+
+  Future<void> UpdateSurveyTime(String survey_id, DateTime update_time) async {
+    try {
+      setState(S_State.BUSY);
+      final MutationOptions options = MutationOptions(
+        document: gql(updateSurveyTime(survey_id, update_time)),
+      );
+
+      GraphQLClient client = await getClient();
+
+      final QueryResult result = await client.mutate(options);
+
+      if (result.hasException) {
+        print(result.exception.toString());
+        setState(S_State.ERROR);
+      }
+      //survey = Survey.fromJson(result.data!['updateSurveys']['surveys'][0]);
     } catch (e) {
       print(e);
       s_state = S_State.ERROR;

@@ -1,4 +1,5 @@
 import 'package:client_flutter/model/myModel.dart';
+import 'package:client_flutter/viewmodel/userViewModel.dart';
 import 'package:flutter/material.dart';
 import '../../viewmodel/questionViewModel.dart';
 import '../../viewmodel/answerViewModel.dart';
@@ -11,12 +12,12 @@ class NextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final vm = Provider.of<QuestionViewModel>(context);
+    final vm = Provider.of<UserViewModel>(context);
     final vma = Provider.of<AnswerViewModel>(context);
     final vms = Provider.of<SurveyViewModel>(context);
     final vmq = Provider.of<QuestionViewModel>(context);
     String isLast() {
-      if (vm.isLastQuestion()) {
+      if (vmq.isLastQuestion()) {
         return "Submit";
       } else {
         return "Next";
@@ -26,17 +27,20 @@ class NextButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: () async {
         Answer ans = new Answer(
-              order: vma.answerOrder,
-              response: controller.text,
-              survey: vms.survey);
+            order: vma.answerOrder,
+            response: controller.text,
+            survey: vms.survey);
         vma.addAnswerToList(ans);
 
-        if (vm.isLastQuestion()) {
-          for(int i =0;i<vma.answers.length;i++){
-            await vma.AddAnswer(vma.answerOrder, vma.answers[i].response,vms.survey,vmq.questionList[i]);
+        if (vmq.isLastQuestion()) {
+          for (int i = 0; i < vma.answers.length; i++) {
+            await vma.AddAnswer(vma.answerOrder, vma.answers[i].response,
+                vms.survey, vmq.questionList[i]);
           }
+          await vms.UpdateSurveyTime(vms.survey.survey_id, DateTime.now());
+          Navigator.pop(context);
         } else {
-          vm.nextQuestion();
+          vmq.nextQuestion();
           controller.clear();
         }
       },

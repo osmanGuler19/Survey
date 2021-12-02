@@ -18,50 +18,54 @@ class UserLandingPage extends StatelessWidget {
         title: Text("User Landing Page"),
       ),
       body: Container(
-          child: Center(
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
             Text(
               'Welcome ${vm.user.name}!',
               style: TextStyle(fontSize: 20),
             ),
-            Row(
-              children: [
-                ElevatedButton(
-                    onPressed: () async {
-                      vms.survey = new Survey(
-                          survey_id:
-                              vm.user.email + "--" + DateTime.now().toString(),
-                          title: survey_title,
-                          description: survey_description,
-                          created_at: DateTime.now(),
-                          user: vm.user);
-                      print(vms.survey.survey_id);
-                      await vms.AddSurveyWithoutAnswers(
-                          vm.user.email + "--" + DateTime.now().toString(),
-                          survey_title,
-                          survey_description,
-                          DateTime.now(),
-                          vm.user);
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                      onPressed: () async {
+                        vms.survey = new Survey(
+                            survey_id: vm.user.email +
+                                "--" +
+                                DateTime.now().toString(),
+                            title: survey_title,
+                            description: survey_description,
+                            created_at: DateTime.now(),
+                            user: vm.user);
+                        print(vms.survey.survey_id);
+                        await vms.AddSurveyWithoutAnswers(
+                            vm.user.email + "--" + DateTime.now().toString(),
+                            survey_title,
+                            survey_description,
+                            DateTime.now(),
+                            vm.user);
 
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => QuestionPage()));
-                    },
-                    child: Text("Take a Survey")),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => UserSurveyListPage()));
-                    },
-                    child: Text("Check the previous surveys")),
-              ],
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => QuestionPage()));
+                      },
+                      child: Text("Take a Survey")),
+                  ElevatedButton(
+                      onPressed: () async {
+                        await vms.getUserSurveys(vm.user.email);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => UserSurveyListPage()));
+                      },
+                      child: Text("Check the previous surveys")),
+                ],
+              ),
             ),
-          ]))),
+          ])),
     );
   }
 }
