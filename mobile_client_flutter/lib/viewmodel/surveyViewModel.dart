@@ -36,7 +36,6 @@ class SurveyViewModel extends ChangeNotifier {
       );
       GraphQLClient client = await getClient();
       final QueryResult result = await client.query(options);
-
       List<Survey> surveys = [];
       s_state = S_State.IDLE;
       List<dynamic> qs = result.data!["surveys"] as List<dynamic>;
@@ -108,6 +107,27 @@ class SurveyViewModel extends ChangeNotifier {
     }
   }
 
+  Future<List<Question>> GetSurveyQuestions(String survey_id) async {
+    try {
+      setState(S_State.BUSY);
+      final QueryOptions options =
+          QueryOptions(document: gql(getSurveyQuestions(survey_id)));
+
+      GraphQLClient client = await getClient();
+      final QueryResult result = await client.query(options);
+      List<Question> questions = [];
+      List<dynamic> qs = result.data!["answers"] as List<dynamic>;
+      for (int i = 0; i < qs.length; i++) {
+        questions.add(Question.fromJson(qs[i]["responseTo"]));
+      }
+      return questions;
+    } catch (e) {
+      print(e);
+      setState(S_State.ERROR);
+      return [];
+    }
+  }
+
   Future<void> AddSurveyWithoutAnswers(String survey_id, String title,
       String description, DateTime create_time, User user) async {
     try {
@@ -129,6 +149,30 @@ class SurveyViewModel extends ChangeNotifier {
     } catch (e) {
       print(e);
       s_state = S_State.ERROR;
+    }
+  }
+
+  Future<List<Answer>> GetSurveyAnswers(String survey_id) async {
+    try {
+      setState(S_State.BUSY);
+      final QueryOptions options =
+          QueryOptions(document: gql(getSurveyAnswers(survey_id)));
+
+      GraphQLClient client = await getClient();
+      final QueryResult result = await client.query(options);
+      List<Answer> answers = [];
+      List<dynamic> qs = result.data!["answers"] as List<dynamic>;
+      //print("Result  " + result.data!["answers"].toString());
+      print("ilk satır" + qs[0]["survey"].toString());
+      for (int i = 0; i < qs.length; i++) {
+        answers.add(Answer.fromJson(qs[i]));
+      }
+
+      return answers;
+    } catch (e) {
+      print(e);
+      setState(S_State.ERROR);
+      return [];
     }
   }
 }

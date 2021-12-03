@@ -30,7 +30,6 @@ class UserViewModel extends ChangeNotifier {
       );
 
       GraphQLClient client = await getClient();
-      print(client);
       final QueryResult result = await client.mutate(options);
       //Getting the result. You have to watch out the return order and types. It changes with every query.
       user = User.fromJson(result.data!['createUsers']['users'][0]);
@@ -44,14 +43,13 @@ class UserViewModel extends ChangeNotifier {
 
   Future<User?> getUser(String email, String password) async {
     try {
-      u_state=UState.BUSY;
+      u_state = UState.BUSY;
       final QueryOptions options = QueryOptions(
           document: gql(getUserByEmail(email, password)),
           fetchPolicy: FetchPolicy.networkOnly);
 
       GraphQLClient client = await getClient();
       final QueryResult result = await client.query(options);
-      print(result.data.toString());
       user = User.fromJson(result.data!['users'][0]);
       if (result.hasException) {
         u_state = UState.ERROR;

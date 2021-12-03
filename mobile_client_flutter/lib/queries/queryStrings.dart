@@ -118,3 +118,16 @@ String getUsersSurveys(String userEmail) {
               surveys(where:{user:{email:"$userEmail"}}){survey_id,title,description,created_at,updated_at,user{email,name,surname,passw}}
             }""";
 }
+
+//Gets one spesific Survey's questions. Because survey questions might change in the future.
+String getSurveyQuestions(String survey_id) {
+  return """query{
+              answers(where:{survey:{survey_id:"$survey_id"}}){responseTo{order text type}}
+            }""";
+}
+
+String getSurveyAnswers(String survey_id) {
+  return """query{
+              answers(where:{survey:{survey_id:"$survey_id"}}){order response survey{survey_id}}
+            }""";
+}

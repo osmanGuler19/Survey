@@ -56,6 +56,7 @@ class UserLandingPage extends StatelessWidget {
                   ElevatedButton(
                       onPressed: () async {
                         await vms.getUserSurveys(vm.user.email);
+
                         Navigator.push(
                             context,
                             MaterialPageRoute(

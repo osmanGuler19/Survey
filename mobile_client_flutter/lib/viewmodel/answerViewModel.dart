@@ -38,12 +38,15 @@ class AnswerViewModel extends ChangeNotifier {
     return this.a_state;
   }
 
-  Future<void> AddAnswer(int order, String response, Survey survey,Question question) async {
+  //These answers adding for survey.
+  Future<void> AddAnswer(
+      int order, String response, Survey survey, Question question) async {
     print(survey.survey_id);
     try {
       setState(AState.BUSY);
       final MutationOptions options = MutationOptions(
-        document: gql(addAnswer(order, response, survey.survey_id,question.text)),
+        document:
+            gql(addAnswer(order, response, survey.survey_id, question.text)),
       );
 
       GraphQLClient client = await getClient();

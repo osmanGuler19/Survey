@@ -34,8 +34,8 @@ class NextButton extends StatelessWidget {
 
         if (vmq.isLastQuestion()) {
           for (int i = 0; i < vma.answers.length; i++) {
-            await vma.AddAnswer(vma.answerOrder, vma.answers[i].response,
-                vms.survey, vmq.questionList[i]);
+            await vma.AddAnswer(
+                i, vma.answers[i].response, vms.survey, vmq.questionList[i]);
           }
           await vms.UpdateSurveyTime(vms.survey.survey_id, DateTime.now());
           Navigator.pop(context);

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../viewmodel/userViewModel.dart';
 import 'package:provider/provider.dart';
 import 'user_survey_detail.dart';
+import '../model/myModel.dart';
 
 class UserSurveyListPage extends StatelessWidget {
   @override
@@ -21,11 +22,24 @@ class UserSurveyListPage extends StatelessWidget {
                 title: Text(vms.userSurveys[index].title),
                 subtitle: Text(vms.userSurveys[index].created_at.toString()),
                 trailing: Icon(Icons.keyboard_arrow_right),
-                onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => UserSurveyDetailPage(
-                            survey: vms.userSurveys[index]))),
+                onTap: () async {
+                  List<Question> qList = await vms.GetSurveyQuestions(
+                      vms.userSurveys[index].survey_id);
+
+                  List<Answer> aList = await vms.GetSurveyAnswers(
+                    vms.userSurveys[index].survey_id,
+                  );
+                  /*
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => UserSurveyDetailPage(
+                            survey: vms.userSurveys[index]
+                          )
+                      )
+                  );
+                  */
+                },
               ),
             );
           }),

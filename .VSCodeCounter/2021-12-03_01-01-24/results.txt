@@ -1,0 +1,175 @@
+Date : 2021-12-03 01:01:24
+Directory : c:\Projects\GrandStackProjects\Survey
+Total : 95 files,  36057 codes, 151 comments, 603 blanks, all 36811 lines
+
+Languages
++-------------+------------+------------+------------+------------+------------+
+| language    | files      | code       | comment    | blank      | total      |
++-------------+------------+------------+------------+------------+------------+
+| JSON        |         14 |     31,773 |          0 |         10 |     31,783 |
+| XML         |         16 |      1,564 |         40 |          7 |      1,611 |
+| Dart        |         29 |      1,504 |         63 |        208 |      1,775 |
+| Markdown    |          9 |        429 |          0 |        213 |        642 |
+| JavaScript  |         11 |        343 |         31 |         61 |        435 |
+| Django txt  |          1 |        169 |          0 |         34 |        203 |
+| Groovy      |          3 |         84 |          3 |         21 |        108 |
+| YAML        |          2 |         74 |          6 |         16 |         96 |
+| GraphQL     |          1 |         40 |          2 |          9 |         51 |
+| Django HTML |          1 |         30 |          0 |          4 |         34 |
+| Docker      |          3 |         24 |          5 |         14 |         43 |
+| Swift       |          1 |         12 |          0 |          2 |         14 |
+| Properties  |          2 |          9 |          1 |          2 |         12 |
+| Ignore      |          1 |          1 |          0 |          1 |          2 |
+| C++         |          1 |          1 |          0 |          1 |          2 |
++-------------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                      | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                         |         95 |     36,057 |        151 |        603 |     36,811 |
+| .idea                                                                                                                     |          8 |      1,432 |          0 |          0 |      1,432 |
+| .idea\libraries                                                                                                           |          2 |        888 |          0 |          0 |        888 |
+| api                                                                                                                       |         15 |     19,665 |         33 |         87 |     19,785 |
+| api\src                                                                                                                   |          8 |      1,776 |         33 |         46 |      1,855 |
+| api\src\functions                                                                                                         |          3 |      1,577 |          4 |          9 |      1,590 |
+| api\src\functions\graphql                                                                                                 |          3 |      1,577 |          4 |          9 |      1,590 |
+| api\src\seed                                                                                                              |          2 |        120 |          0 |         15 |        135 |
+| mobile_client_flutter                                                                                                     |         52 |      2,003 |        113 |        276 |      2,392 |
+| mobile_client_flutter\android                                                                                             |         10 |        145 |         42 |         28 |        215 |
+| mobile_client_flutter\android\app                                                                                         |          6 |        101 |         41 |         17 |        159 |
+| mobile_client_flutter\android\app\src                                                                                     |          5 |         52 |         38 |          5 |         95 |
+| mobile_client_flutter\android\app\src\debug                                                                               |          1 |          4 |          3 |          1 |          8 |
+| mobile_client_flutter\android\app\src\main                                                                                |          3 |         44 |         32 |          3 |         79 |
+| mobile_client_flutter\android\app\src\main\res                                                                            |          2 |         13 |         16 |          3 |         32 |
+| mobile_client_flutter\android\app\src\main\res\drawable                                                                   |          1 |          4 |          7 |          2 |         13 |
+| mobile_client_flutter\android\app\src\main\res\values                                                                     |          1 |          9 |          9 |          1 |         19 |
+| mobile_client_flutter\android\app\src\profile                                                                             |          1 |          4 |          3 |          1 |          8 |
+| mobile_client_flutter\android\gradle                                                                                      |          1 |          5 |          1 |          1 |          7 |
+| mobile_client_flutter\android\gradle\wrapper                                                                              |          1 |          5 |          1 |          1 |          7 |
+| mobile_client_flutter\assets                                                                                              |          1 |         19 |          0 |          0 |         19 |
+| mobile_client_flutter\assets\images                                                                                       |          1 |         19 |          0 |          0 |         19 |
+| mobile_client_flutter\ios                                                                                                 |          7 |        222 |          2 |          9 |        233 |
+| mobile_client_flutter\ios\Runner                                                                                          |          7 |        222 |          2 |          9 |        233 |
+| mobile_client_flutter\ios\Runner\Assets.xcassets                                                                          |          3 |        148 |          0 |          4 |        152 |
+| mobile_client_flutter\ios\Runner\Assets.xcassets\AppIcon.appiconset                                                       |          1 |        122 |          0 |          1 |        123 |
+| mobile_client_flutter\ios\Runner\Assets.xcassets\LaunchImage.imageset                                                     |          2 |         26 |          0 |          3 |         29 |
+| mobile_client_flutter\ios\Runner\Base.lproj                                                                               |          2 |         61 |          2 |          2 |         65 |
+| mobile_client_flutter\lib                                                                                                 |         29 |      1,504 |         63 |        208 |      1,775 |
+| mobile_client_flutter\lib\constants                                                                                       |          1 |          2 |          0 |          0 |          2 |
+| mobile_client_flutter\lib\model                                                                                           |          2 |        143 |          4 |         34 |        181 |
+| mobile_client_flutter\lib\queries                                                                                         |          1 |        118 |          1 |         15 |        134 |
+| mobile_client_flutter\lib\services                                                                                        |          1 |         12 |          9 |          6 |         27 |
+| mobile_client_flutter\lib\view                                                                                            |          7 |        473 |         12 |         41 |        526 |
+| mobile_client_flutter\lib\viewmodel                                                                                       |          4 |        337 |          9 |         57 |        403 |
+| mobile_client_flutter\lib\widgets                                                                                         |         12 |        373 |         26 |         52 |        451 |
+| mobile_client_flutter\lib\widgets\login_page                                                                              |          4 |        118 |         21 |         16 |        155 |
+| mobile_client_flutter\lib\widgets\question_page                                                                           |          6 |        166 |          3 |         23 |        192 |
+| mobile_client_flutter\lib\widgets\signup_page                                                                             |          2 |         89 |          2 |         13 |        104 |
+| mobile_client_flutter\web                                                                                                 |          2 |         53 |          0 |          4 |         57 |
+| neo4j                                                                                                                     |          2 |         27 |          0 |         13 |         40 |
+| scripts                                                                                                                   |          7 |        142 |          0 |         28 |        170 |
+| scripts\config                                                                                                            |          1 |          1 |          0 |          0 |          1 |
++---------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------------------------------------------------+-------------+------------+------------+------------+------------+
+| filename                                                                                                                  | language    | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------------------------+-------------+------------+------------+------------+------------+
+| c:\Projects\GrandStackProjects\Survey\.eslintrc.json                                                                      | JSON        |         28 |          0 |          1 |         29 |
+| c:\Projects\GrandStackProjects\Survey\.idea\Survey.iml                                                                    | XML         |         14 |          0 |          0 |         14 |
+| c:\Projects\GrandStackProjects\Survey\.idea\dbnavigator.xml                                                               | XML         |        458 |          0 |          0 |        458 |
+| c:\Projects\GrandStackProjects\Survey\.idea\libraries\Dart_Packages.xml                                                   | XML         |        860 |          0 |          0 |        860 |
+| c:\Projects\GrandStackProjects\Survey\.idea\libraries\Dart_SDK.xml                                                        | XML         |         28 |          0 |          0 |         28 |
+| c:\Projects\GrandStackProjects\Survey\.idea\modules.xml                                                                   | XML         |          8 |          0 |          0 |          8 |
+| c:\Projects\GrandStackProjects\Survey\.idea\runConfigurations.xml                                                         | XML         |         10 |          0 |          0 |         10 |
+| c:\Projects\GrandStackProjects\Survey\.idea\vcs.xml                                                                       | XML         |          6 |          0 |          0 |          6 |
+| c:\Projects\GrandStackProjects\Survey\.idea\workspace.xml                                                                 | XML         |         48 |          0 |          0 |         48 |
+| c:\Projects\GrandStackProjects\Survey\.prettierrc.json                                                                    | JSON        |          5 |          0 |          0 |          5 |
+| c:\Projects\GrandStackProjects\Survey\CODE_OF_CONDUCT.md                                                                  | Markdown    |         92 |          0 |         36 |        128 |
+| c:\Projects\GrandStackProjects\Survey\CONTRIBUTING.md                                                                     | Markdown    |         73 |          0 |         28 |        101 |
+| c:\Projects\GrandStackProjects\Survey\LICENSE.txt                                                                         | Django txt  |        169 |          0 |         34 |        203 |
+| c:\Projects\GrandStackProjects\Survey\README.md                                                                           | Markdown    |        141 |          0 |         92 |        233 |
+| c:\Projects\GrandStackProjects\Survey\api\.dockerignore                                                                   | Ignore      |          1 |          0 |          1 |          2 |
+| c:\Projects\GrandStackProjects\Survey\api\Dockerfile                                                                      | Docker      |          8 |          0 |          5 |         13 |
+| c:\Projects\GrandStackProjects\Survey\api\README.md                                                                       | Markdown    |         37 |          0 |         24 |         61 |
+| c:\Projects\GrandStackProjects\Survey\api\auth0-howto.md                                                                  | Markdown    |         40 |          0 |          7 |         47 |
+| c:\Projects\GrandStackProjects\Survey\api\babel.config.js                                                                 | JavaScript  |         35 |          0 |          2 |         37 |
+| c:\Projects\GrandStackProjects\Survey\api\package-lock.json                                                               | JSON        |     17,724 |          0 |          1 |     17,725 |
+| c:\Projects\GrandStackProjects\Survey\api\package.json                                                                    | JSON        |         44 |          0 |          1 |         45 |
+| c:\Projects\GrandStackProjects\Survey\api\src\functions\graphql\graphql.js                                                | JavaScript  |         17 |          4 |          7 |         28 |
+| c:\Projects\GrandStackProjects\Survey\api\src\functions\graphql\package-lock.json                                         | JSON        |      1,545 |          0 |          1 |      1,546 |
+| c:\Projects\GrandStackProjects\Survey\api\src\functions\graphql\package.json                                              | JSON        |         15 |          0 |          1 |         16 |
+| c:\Projects\GrandStackProjects\Survey\api\src\graphql-schema.js                                                           | JavaScript  |          7 |          4 |          3 |         14 |
+| c:\Projects\GrandStackProjects\Survey\api\src\index.js                                                                    | JavaScript  |         32 |         23 |         10 |         65 |
+| c:\Projects\GrandStackProjects\Survey\api\src\schema.graphql                                                              | GraphQL     |         40 |          2 |          9 |         51 |
+| c:\Projects\GrandStackProjects\Survey\api\src\seed\seed-db.js                                                             | JavaScript  |         35 |          0 |          8 |         43 |
+| c:\Projects\GrandStackProjects\Survey\api\src\seed\seed-mutations.js                                                      | JavaScript  |         85 |          0 |          7 |         92 |
+| c:\Projects\GrandStackProjects\Survey\app.json                                                                            | JSON        |         17 |          0 |          0 |         17 |
+| c:\Projects\GrandStackProjects\Survey\docker-compose.yml                                                                  | YAML        |         37 |          5 |          5 |         47 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\Dockerfile                                                    | Docker      |          6 |          5 |          3 |         14 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\README.md                                                     | Markdown    |         17 |          0 |         13 |         30 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\android\app\build.gradle                                      | Groovy      |         49 |          3 |         12 |         64 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\android\app\src\debug\AndroidManifest.xml                     | XML         |          4 |          3 |          1 |          8 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\android\app\src\main\AndroidManifest.xml                      | XML         |         31 |         16 |          0 |         47 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\android\app\src\main\res\drawable\launch_background.xml       | XML         |          4 |          7 |          2 |         13 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\android\app\src\main\res\values\styles.xml                    | XML         |          9 |          9 |          1 |         19 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\android\app\src\profile\AndroidManifest.xml                   | XML         |          4 |          3 |          1 |          8 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\android\build.gradle                                          | Groovy      |         27 |          0 |          5 |         32 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\android\gradle.properties                                     | Properties  |          4 |          0 |          1 |          5 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\android\gradle\wrapper\gradle-wrapper.properties              | Properties  |          5 |          1 |          1 |          7 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\android\settings.gradle                                       | Groovy      |          8 |          0 |          4 |         12 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\assets\images\university_logo.svg                             | XML         |         19 |          0 |          0 |         19 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\ios\Runner\AppDelegate.swift                                  | Swift       |         12 |          0 |          2 |         14 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\ios\Runner\Assets.xcassets\AppIcon.appiconset\Contents.json   | JSON        |        122 |          0 |          1 |        123 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\ios\Runner\Assets.xcassets\LaunchImage.imageset\Contents.json | JSON        |         23 |          0 |          1 |         24 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\ios\Runner\Assets.xcassets\LaunchImage.imageset\README.md     | Markdown    |          3 |          0 |          2 |          5 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\ios\Runner\Base.lproj\LaunchScreen.storyboard                 | XML         |         36 |          1 |          1 |         38 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\ios\Runner\Base.lproj\Main.storyboard                         | XML         |         25 |          1 |          1 |         27 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\ios\Runner\Runner-Bridging-Header.h                           | C++         |          1 |          0 |          1 |          2 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\constants\strings.dart                                    | Dart        |          2 |          0 |          0 |          2 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\main.dart                                                 | Dart        |         46 |          2 |          3 |         51 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\model\myModel.dart                                        | Dart        |         72 |          0 |         19 |         91 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\model\myModel.g.dart                                      | Dart        |         71 |          4 |         15 |         90 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\queries\queryStrings.dart                                 | Dart        |        118 |          1 |         15 |        134 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\services\gql.dart                                         | Dart        |         12 |          9 |          6 |         27 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\view\landing_page.dart                                    | Dart        |        147 |          1 |         10 |        158 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\view\login.dart                                           | Dart        |         51 |          0 |          6 |         57 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\view\question.dart                                        | Dart        |         86 |          1 |         12 |         99 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\view\signin.dart                                          | Dart        |         61 |          0 |          3 |         64 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\view\user_landing.dart                                    | Dart        |         69 |          0 |          4 |         73 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\view\user_survey_detail.dart                              | Dart        |         20 |          0 |          3 |         23 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\view\users_surveys_list.dart                              | Dart        |         39 |         10 |          3 |         52 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\viewmodel\answerViewModel.dart                            | Dart        |         53 |          2 |         11 |         66 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\viewmodel\questionViewModel.dart                          | Dart        |         69 |          1 |         12 |         82 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\viewmodel\surveyViewModel.dart                            | Dart        |        150 |          5 |         27 |        182 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\viewmodel\userViewModel.dart                              | Dart        |         65 |          1 |          7 |         73 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\widgets\login_page\user_login_forget_button.dart          | Dart        |         16 |          0 |          2 |         18 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\widgets\login_page\user_login_login_button.dart           | Dart        |         50 |         19 |          7 |         76 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\widgets\login_page\user_login_logo.dart                   | Dart        |         19 |          0 |          3 |         22 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\widgets\login_page\user_login_signup_button.dart          | Dart        |         33 |          2 |          4 |         39 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\widgets\question_page\answerContainer.dart                | Dart        |         19 |          0 |          3 |         22 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\widgets\question_page\myAlertDialog.dart                  | Dart        |         23 |          0 |          3 |         26 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\widgets\question_page\nextButton.dart                     | Dart        |         54 |          0 |          5 |         59 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\widgets\question_page\previousButton.dart                 | Dart        |         24 |          0 |          3 |         27 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\widgets\question_page\progressBar.dart                    | Dart        |         24 |          0 |          4 |         28 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\widgets\question_page\questionContainer.dart              | Dart        |         22 |          3 |          5 |         30 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\widgets\signup_page\genericTextField.dart                 | Dart        |         26 |          0 |          4 |         30 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\lib\widgets\signup_page\signin_button.dart                    | Dart        |         63 |          2 |          9 |         74 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\pubspec.yaml                                                  | YAML        |         37 |          1 |         11 |         49 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\web\index.html                                                | Django HTML |         30 |          0 |          4 |         34 |
+| c:\Projects\GrandStackProjects\Survey\mobile_client_flutter\web\manifest.json                                             | JSON        |         23 |          0 |          0 |         23 |
+| c:\Projects\GrandStackProjects\Survey\neo4j\Dockerfile                                                                    | Docker      |         10 |          0 |          6 |         16 |
+| c:\Projects\GrandStackProjects\Survey\neo4j\README.md                                                                     | Markdown    |         17 |          0 |          7 |         24 |
+| c:\Projects\GrandStackProjects\Survey\package-lock.json                                                                   | JSON        |     12,137 |          0 |          1 |     12,138 |
+| c:\Projects\GrandStackProjects\Survey\package.json                                                                        | JSON        |         35 |          0 |          1 |         36 |
+| c:\Projects\GrandStackProjects\Survey\scripts\README.md                                                                   | Markdown    |          9 |          0 |          4 |         13 |
+| c:\Projects\GrandStackProjects\Survey\scripts\build.js                                                                    | JavaScript  |         31 |          0 |          5 |         36 |
+| c:\Projects\GrandStackProjects\Survey\scripts\common.js                                                                   | JavaScript  |         27 |          0 |          6 |         33 |
+| c:\Projects\GrandStackProjects\Survey\scripts\config\index.json                                                           | JSON        |          1 |          0 |          0 |          1 |
+| c:\Projects\GrandStackProjects\Survey\scripts\inferSchema.js                                                              | JavaScript  |         31 |          0 |          5 |         36 |
+| c:\Projects\GrandStackProjects\Survey\scripts\seed.js                                                                     | JavaScript  |         12 |          0 |          3 |         15 |
+| c:\Projects\GrandStackProjects\Survey\scripts\start-dev.js                                                                | JavaScript  |         31 |          0 |          5 |         36 |
+| c:\Projects\GrandStackProjects\Survey\vercel.json                                                                         | JSON        |         54 |          0 |          1 |         55 |
+| Total                                                                                                                     |             |     36,057 |        151 |        603 |     36,811 |
++---------------------------------------------------------------------------------------------------------------------------+-------------+------------+------------+------------+------------+
