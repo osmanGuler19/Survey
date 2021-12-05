@@ -13,36 +13,37 @@ class UserSurveyListPage extends StatelessWidget {
       appBar: AppBar(
         title: Center(child: Text('User\'s Survey List')),
       ),
-      body: ListView.builder(
-          itemCount: vms.userSurveys.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Container(
-              width: getWidth(context, MediaQuery.of(context).orientation),
-              child: ListTile(
-                title: Text(vms.userSurveys[index].title),
-                subtitle: Text(vms.userSurveys[index].created_at.toString()),
-                trailing: Icon(Icons.keyboard_arrow_right),
-                onTap: () async {
-                  List<Question> qList = await vms.GetSurveyQuestions(
-                      vms.userSurveys[index].survey_id);
+      body: Center(
+        child: Container(
+          width: getWidth(context, MediaQuery.of(context).orientation),
+          child: ListView.builder(
+              itemCount: vms.userSurveys.length,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                  title: Text(vms.userSurveys[index].title),
+                  subtitle: Text(vms.userSurveys[index].created_at.toString()),
+                  trailing: Icon(Icons.keyboard_arrow_right),
+                  onTap: () async {
+                    List<Question> qList = await vms.GetSurveyQuestions(
+                        vms.userSurveys[index].survey_id);
 
-                  List<Answer> aList = await vms.GetSurveyAnswers(
-                    vms.userSurveys[index].survey_id,
-                  );
-                  /*
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => UserSurveyDetailPage(
-                            survey: vms.userSurveys[index]
-                          )
-                      )
-                  );
-                  */
-                },
-              ),
-            );
-          }),
+                    List<Answer> aList = await vms.GetSurveyAnswers(
+                      vms.userSurveys[index].survey_id,
+                    );
+
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => UserSurveyDetailPage(
+                                  survey: vms.userSurveys[index],
+                                  answerList: aList,
+                                  questionList: qList,
+                                )));
+                  },
+                );
+              }),
+        ),
+      ),
     );
   }
 }

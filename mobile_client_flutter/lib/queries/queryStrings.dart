@@ -128,6 +128,6 @@ String getSurveyQuestions(String survey_id) {
 
 String getSurveyAnswers(String survey_id) {
   return """query{
-              answers(where:{survey:{survey_id:"$survey_id"}}){order response survey{survey_id}}
+              answers(where:{survey:{survey_id:"$survey_id"}}){order response survey{survey_id title description created_at updated_at user{name surname email passw}}}
             }""";
 }

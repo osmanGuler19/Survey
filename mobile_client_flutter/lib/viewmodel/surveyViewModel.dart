@@ -162,11 +162,27 @@ class SurveyViewModel extends ChangeNotifier {
       final QueryResult result = await client.query(options);
       List<Answer> answers = [];
       List<dynamic> qs = result.data!["answers"] as List<dynamic>;
-      //print("Result  " + result.data!["answers"].toString());
-      print("ilk satır" + qs[0]["survey"].toString());
       for (int i = 0; i < qs.length; i++) {
-        answers.add(Answer.fromJson(qs[i]));
+        //Usual parsing didn't work. So I did manually
+        User u = new User(
+            name: qs[i]["survey"]["user"]["name"],
+            surname: qs[i]["survey"]["user"]["surname"],
+            email: qs[i]["survey"]["user"]["email"],
+            passw: qs[i]["survey"]["user"]["passw"]);
+        Survey s = new Survey(
+            survey_id: qs[i]["survey"]["survey_id"],
+            title: qs[i]["survey"]["title"],
+            description: qs[i]["survey"]["description"],
+            created_at: DateTime.parse(qs[i]["survey"]["created_at"]),
+            updated_at: DateTime.parse(qs[i]["survey"]["updated_at"]),
+            user: u);
+        //Survey tempS = new Survey(user: )
+        Answer temp = new Answer(
+            order: qs[i]["order"], response: qs[i]["response"], survey: s);
+        answers.add(temp);
       }
+
+      print(answers[0].response);
 
       return answers;
     } catch (e) {

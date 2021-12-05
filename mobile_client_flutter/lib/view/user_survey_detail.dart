@@ -9,15 +9,38 @@ import 'package:flutter/services.dart';
 
 class UserSurveyDetailPage extends StatelessWidget {
   final Survey survey;
-  UserSurveyDetailPage({Key? key, required this.survey}) : super(key: key);
+  final List<Answer> answerList;
+  final List<Question> questionList;
+  UserSurveyDetailPage(
+      {Key? key,
+      required this.survey,
+      required this.answerList,
+      required this.questionList})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    List<TextEditingController> textEditingControllers =
+        List<TextEditingController>.generate(
+            questionList.length, (index) => TextEditingController());
     return Scaffold(
         appBar: AppBar(
           title: Text('User Survey Detail'),
         ),
-        body: Container());
+        body: Center(
+          child: Container(
+            width: getWidth(context, MediaQuery.of(context).orientation),
+            child: ListView.builder(
+                itemCount: questionList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return QuestionAndAnswerContainer(
+                      context,
+                      questionList[index].text,
+                      answerList[index].response,
+                      textEditingControllers[index]);
+                }),
+          ),
+        ));
   }
 }
 
@@ -36,12 +59,19 @@ Widget QuestionAndAnswerContainer(BuildContext context, String questionText,
           height: 10,
         ),
         MyAnswerContainer(answerText, controller),
+        SizedBox(
+          height: 50,
+        ),
+        Divider(
+          color: Colors.grey,
+        ),
       ],
     ),
   );
 }
 
 Widget MyAnswerContainer(String answerText, TextEditingController controller) {
+  controller.text = answerText;
   return TextField(
     maxLengthEnforcement: MaxLengthEnforcement.enforced,
     keyboardType: TextInputType.multiline,

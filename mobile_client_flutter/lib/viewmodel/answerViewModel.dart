@@ -24,6 +24,11 @@ class AnswerViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void decreaseInd() {
+    ind--;
+    notifyListeners();
+  }
+
   void setState(AState state) {
     this.a_state = state;
     notifyListeners();

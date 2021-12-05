@@ -10,10 +10,9 @@ import '../widgets/question_page/previousButton.dart';
 import '../viewmodel/questionViewModel.dart';
 import 'package:provider/provider.dart';
 import '../viewmodel/userViewModel.dart';
+import '../viewmodel/answerViewModel.dart';
 
 class QuestionPage extends StatelessWidget {
-  
-
   const QuestionPage({Key? key}) : super(key: key);
 
   Widget getWidgetsByCondition(QuestionViewModel a) {
@@ -43,15 +42,21 @@ class QuestionPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text("Question Survey")),
-        actions: <Widget>[ Row(children: [Text(vm.user.name+ "  "+vm.user.surname+"  "),Icon(Icons.self_improvement_outlined)],)],
-
+        actions: <Widget>[
+          Row(
+            children: [
+              Text(vm.user.name + "  " + vm.user.surname + "  "),
+              Icon(Icons.self_improvement_outlined)
+            ],
+          )
+        ],
       ),
       backgroundColor: Color.fromRGBO(240, 240, 240, 1),
       body: Center(
           child: Container(
         padding: EdgeInsets.only(top: 30, left: 30, right: 30, bottom: 20),
         color: Colors.white,
-        width: getWidth(context,MediaQuery.of(context).orientation ),
+        width: getWidth(context, MediaQuery.of(context).orientation),
         //height: MediaQuery.of(context).size.height * 0.5,
         child: Column(
           children: [
@@ -61,6 +66,13 @@ class QuestionPage extends StatelessWidget {
             Consumer<QuestionViewModel>(builder: (_, a, child) {
               return getWidgetsByCondition(a);
             }),
+            /*
+            Consumer<AnswerViewModel>(builder: (_, a, child) {
+              return AnswerContainer(
+                controller: controller,
+              );
+            }),
+            */
             Container(
               child: AnswerContainer(
                 controller: controller,
@@ -71,8 +83,12 @@ class QuestionPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  PreviousButton(),
-                  NextButton(controller: controller,),
+                  PreviousButton(
+                    controller: controller,
+                  ),
+                  NextButton(
+                    controller: controller,
+                  ),
                 ],
               ),
             )
@@ -80,16 +96,14 @@ class QuestionPage extends StatelessWidget {
         ),
       )),
     );
-
-    
   }
 }
 
-double getWidth(BuildContext context,Orientation or) {
-  if(or == Orientation.portrait){
-      return MediaQuery.of(context).size.width;
-  }else{
-      return MediaQuery.of(context).size.width/2;
+double getWidth(BuildContext context, Orientation or) {
+  if (or == Orientation.portrait) {
+    return MediaQuery.of(context).size.width;
+  } else {
+    return MediaQuery.of(context).size.width / 2;
   }
 }
 
