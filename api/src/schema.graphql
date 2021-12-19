@@ -39,7 +39,7 @@ type Survey {
   survey_id: ID!
   title: String
   description: String
-  answers: [Answer]
+  #answers: [Answer] @relationship(type: "hasAnswer", direction: OUT)
   created_at: DateTime
   updated_at: DateTime
   user: User @relationship(type: "hasSurvey", direction: IN)
