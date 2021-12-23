@@ -2,6 +2,7 @@ import 'package:client_flutter/viewmodel/questionViewModel.dart';
 import 'package:client_flutter/viewmodel/userViewModel.dart';
 import 'package:client_flutter/viewmodel/answerViewModel.dart';
 import 'package:client_flutter/viewmodel/surveyViewModel.dart';
+import 'package:client_flutter/viewmodel/componentScopeViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:client_flutter/services/gql.dart';
@@ -30,6 +31,8 @@ class MyApp extends StatelessWidget {
             create: (_) => AnswerViewModel()),
         ChangeNotifierProvider<SurveyViewModel>(
             create: (_) => SurveyViewModel()),
+        ChangeNotifierProvider<ComponentAndScopeViewModel>(
+            create: (_) => ComponentAndScopeViewModel()),
       ],
       child: MaterialApp(
         title: 'GrandStack Flutter',

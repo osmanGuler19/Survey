@@ -39,7 +39,6 @@ class Survey {
   factory Survey.fromJson(Map<String, dynamic> json) => _$SurveyFromJson(json);
 
   Map<String, dynamic> toJson() => _$SurveyToJson(this);
-
 }
 
 @JsonSerializable()
@@ -72,7 +71,7 @@ class Question {
 @JsonSerializable()
 class Component {
   String label;
-  int id;
+  String id;
   Component({required this.id, required this.label});
   factory Component.fromJson(Map<String, dynamic> json) =>
       _$ComponentFromJson(json);
@@ -82,7 +81,7 @@ class Component {
 @JsonSerializable()
 class Scope {
   String label;
-  int id;
+  String id;
   Scope({required this.id, required this.label});
 
   factory Scope.fromJson(Map<String, dynamic> json) => _$ScopeFromJson(json);

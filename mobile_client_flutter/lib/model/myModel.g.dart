@@ -69,7 +69,7 @@ Map<String, dynamic> _$QuestionToJson(Question instance) => <String, dynamic>{
     };
 
 Component _$ComponentFromJson(Map<String, dynamic> json) => Component(
-      id: json['id'] as int,
+      id: json['id'] as String,
       label: json['label'] as String,
     );
 
@@ -79,7 +79,7 @@ Map<String, dynamic> _$ComponentToJson(Component instance) => <String, dynamic>{
     };
 
 Scope _$ScopeFromJson(Map<String, dynamic> json) => Scope(
-      id: json['id'] as int,
+      id: json['id'] as String,
       label: json['label'] as String,
     );
 

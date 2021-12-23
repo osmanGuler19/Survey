@@ -131,3 +131,15 @@ String getSurveyAnswers(String survey_id) {
               answers(where:{survey:{survey_id:"$survey_id"}}){order response survey{survey_id title description created_at updated_at user{name surname email passw}}}
             }""";
 }
+
+String getScopes() {
+  return """query{
+              scopes{id label}
+            }""";
+}
+
+String getComponents() {
+  return """query{
+              components{id label}
+            }""";
+}

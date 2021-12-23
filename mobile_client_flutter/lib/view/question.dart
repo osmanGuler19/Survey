@@ -1,3 +1,5 @@
+import 'package:client_flutter/model/myModel.dart';
+import 'package:client_flutter/viewmodel/componentScopeViewModel.dart';
 import 'package:client_flutter/viewmodel/questionViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
@@ -7,6 +9,7 @@ import '../widgets/question_page/questionContainer.dart';
 import '../widgets/question_page/answerContainer.dart';
 import '../widgets/question_page/nextButton.dart';
 import '../widgets/question_page/previousButton.dart';
+import '../widgets/question_page/matrix.dart';
 import '../viewmodel/questionViewModel.dart';
 import 'package:provider/provider.dart';
 import '../viewmodel/userViewModel.dart';
@@ -37,8 +40,12 @@ class QuestionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Just dummyyyyy
+    List<Component> comps = new List<Component>.empty();
+    List<Scope> scopes = new List<Scope>.empty();
     TextEditingController controller = new TextEditingController();
     final vm = Provider.of<UserViewModel>(context);
+    final csm = Provider.of<ComponentAndScopeViewModel>(context);
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text("Question Survey")),
@@ -58,41 +65,46 @@ class QuestionPage extends StatelessWidget {
         color: Colors.white,
         width: getWidth(context, MediaQuery.of(context).orientation),
         //height: MediaQuery.of(context).size.height * 0.5,
-        child: Column(
-          children: [
-            JumpingDotsProgressIndicator(
-              fontSize: 20.0,
-            ),
-            Consumer<QuestionViewModel>(builder: (_, a, child) {
-              return getWidgetsByCondition(a);
-            }),
-            /*
-            Consumer<AnswerViewModel>(builder: (_, a, child) {
-              return AnswerContainer(
-                controller: controller,
-              );
-            }),
-            */
-            Container(
-              child: AnswerContainer(
-                controller: controller,
+        child: SingleChildScrollView(
+          padding: EdgeInsets.only(bottom: 15),
+          child: Column(
+            children: [
+              JumpingDotsProgressIndicator(
+                fontSize: 20.0,
               ),
-            ),
-            Container(
-              padding: EdgeInsets.only(top: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  PreviousButton(
-                    controller: controller,
-                  ),
-                  NextButton(
-                    controller: controller,
-                  ),
-                ],
+              Consumer<QuestionViewModel>(builder: (_, a, child) {
+                return getWidgetsByCondition(a);
+              }),
+              /*
+              Consumer<AnswerViewModel>(builder: (_, a, child) {
+                return AnswerContainer(
+                  controller: controller,
+                );
+              }),
+              */
+              Container(
+                child: AnswerContainer(
+                  controller: controller,
+                ),
               ),
-            )
-          ],
+              Container(
+                padding: EdgeInsets.only(top: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    PreviousButton(
+                      controller: controller,
+                    ),
+                    NextButton(
+                      controller: controller,
+                    ),
+                  ],
+                ),
+              ),
+              MatrixWidget(
+                  components: csm.componentList, scopes: csm.scopeList),
+            ],
+          ),
         ),
       )),
     );

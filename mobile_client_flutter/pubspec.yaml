@@ -24,6 +24,7 @@ dependencies:
   json_helpers: ^0.1.5
   flutter_svg: ^0.23.0+1
   marquee: ^2.2.0
+  hovering: ^1.0.4
 
 dev_dependencies:
   flutter_test:

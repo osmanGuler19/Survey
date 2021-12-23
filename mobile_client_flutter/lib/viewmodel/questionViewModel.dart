@@ -22,31 +22,30 @@ class QuestionViewModel extends ChangeNotifier {
     fetchQuestions();
   }
 
-  bool isLastQuestion(){
-    if(i==questionList.length-1){
+  bool isLastQuestion() {
+    if (i == questionList.length - 1) {
       return true;
-    }
-    else{
+    } else {
       return false;
     }
   }
 
   void nextQuestion() {
-    if(i<questionList.length-1){
+    if (i < questionList.length - 1) {
       i++;
       notifyListeners();
-    }  
+    }
   }
 
   void preQuestion() {
-    if(i>0){
+    if (i > 0) {
       i--;
       notifyListeners();
     }
   }
 
   QState get state => q_state;
-  
+
   set state(QState state) {
     q_state = state;
     notifyListeners();
@@ -77,5 +76,9 @@ class QuestionViewModel extends ChangeNotifier {
       return [];
     }
   }
-}
 
+  Future<void> goToQuestion(int index) async {
+    i = index;
+    notifyListeners();
+  }
+}

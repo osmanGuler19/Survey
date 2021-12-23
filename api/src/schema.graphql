@@ -19,7 +19,6 @@ type Component {
   id: ID!
   label: String
 }
-
 type Answer {
   order: Int
   response: String
