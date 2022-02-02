@@ -25,6 +25,9 @@ class UserLandingPage extends StatelessWidget {
               'Welcome ${vm.user.name}!',
               style: TextStyle(fontSize: 20),
             ),
+            SizedBox(
+              height: 50,
+            ),
             Container(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -53,6 +56,7 @@ class UserLandingPage extends StatelessWidget {
                                 builder: (context) => QuestionPage()));
                       },
                       child: Text("Take a Survey")),
+                  SizedBox(width: 40),
                   ElevatedButton(
                       onPressed: () async {
                         await vms.getUserSurveys(vm.user.email);

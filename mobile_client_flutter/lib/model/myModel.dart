@@ -59,8 +59,15 @@ class Question {
   int order;
   String text;
   String type;
+  Component component;
+  Scope scope;
 
-  Question({required this.order, required this.text, required this.type});
+  Question(
+      {required this.order,
+      required this.text,
+      required this.type,
+      required this.component,
+      required this.scope});
 
   factory Question.fromJson(Map<String, dynamic> json) =>
       _$QuestionFromJson(json);

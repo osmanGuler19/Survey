@@ -12,8 +12,8 @@ class MatrixWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         child: layoutTheButtons(context, components, scopes),
-        width: 210,
-        height: 240);
+        width: 220,
+        height: 210);
   }
 }
 
@@ -49,6 +49,7 @@ Widget layoutTheButtons(
                         color: Colors.grey,
                         width: 2.0)),
                 child: ListView(
+                  padding: EdgeInsets.only(top: 15),
                   children: mywidget,
                 ),
               ),
@@ -94,9 +95,12 @@ class MatrixItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(5.0),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          print('Tooltip ekrana gösterildi');
+        },
+        hoverColor: Colors.orange,
         child: Tooltip(
           message: tooltip,
           child: Container(

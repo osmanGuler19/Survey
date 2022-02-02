@@ -3,7 +3,7 @@ String getQuestionByOrder(int orderNum) {
 }
 
 String getAllQuestions() {
-  return r"""query{questions{order,text,type}}""";
+  return r"""query{questions{order,text,type, scope{label, id}, component{label, id}}}""";
 }
 
 String addUser(

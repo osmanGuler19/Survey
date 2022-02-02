@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 import '../services/gql.dart';
 import '../queries/queryStrings.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'componentScopeViewModel.dart';
 
 enum QState { IDLE, BUSY, ERROR, DEFAULT }
 
@@ -14,10 +15,14 @@ class QuestionViewModel extends ChangeNotifier {
   late QState q_state;
 
   late List<Question> questionList;
+  late List<List<Question>> questionMatrix;
+  late Map<String, List<Question>> questionMap;
   int i = 0;
 
   QuestionViewModel() {
     questionList = [];
+    questionMatrix = [[]];
+    questionMap = {};
     q_state = QState.IDLE;
     fetchQuestions();
   }
@@ -51,7 +56,7 @@ class QuestionViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<List<Question>> fetchQuestions() async {
+  Future<void> fetchQuestions() async {
     try {
       q_state = QState.BUSY;
       final QueryOptions options = QueryOptions(
@@ -59,21 +64,26 @@ class QuestionViewModel extends ChangeNotifier {
       );
       GraphQLClient client = await getClient();
       final QueryResult result = await client.query(options);
-      //print("result : ${result.data!["questions"]}");
-      List<Question> questions = [];
       q_state = QState.IDLE;
       List<dynamic> qs = result.data!["questions"] as List<dynamic>;
       for (int ind = 0; ind < qs.length; ind++) {
         Question temp = Question.fromJson(qs[ind]);
-        questions.add(temp);
         questionList.add(temp);
+        String scopeComponent =
+            temp.component.label.trim() + " && " + temp.scope.label.trim();
+
+        if (questionMap.containsKey(scopeComponent)) {
+          questionMap[scopeComponent]!.add(temp);
+        } else {
+          questionMap[scopeComponent] = [temp];
+        }
       }
+      print("QuestionMap : ");
+      print(questionMap["Project && Actors/Agents"] as List<Question>);
       notifyListeners();
-      return questions;
     } catch (e) {
       print(e);
       q_state = QState.ERROR;
-      return [];
     }
   }
 
@@ -82,3 +92,24 @@ class QuestionViewModel extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+
+
+/*
+  void fillTheMatrix() {
+    List<Component> compList = [];
+
+    List<Scope> scopeList = [];
+    // Will be slow as fuck
+    for (int i = 0; i < questionList.length; i++) {
+      if (questionList[i].component != null &&
+          !compList.contains(questionList[i].component)) {
+        compList.add(questionList[i].component);
+      }
+      if (questionList[i].scope != null &&
+          !scopeList.contains(questionList[i].scope)) {
+        scopeList.add(questionList[i].scope);
+      }
+    }
+  }
+*/

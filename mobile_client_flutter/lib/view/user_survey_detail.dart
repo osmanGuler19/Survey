@@ -28,17 +28,24 @@ class UserSurveyDetailPage extends StatelessWidget {
           title: Text('User Survey Detail'),
         ),
         body: Center(
-          child: Container(
-            width: getWidth(context, MediaQuery.of(context).orientation),
-            child: ListView.builder(
-                itemCount: questionList.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return QuestionAndAnswerContainer(
-                      context,
-                      questionList[index].text,
-                      answerList[index].response,
-                      textEditingControllers[index]);
-                }),
+          child: Column(
+            children: [
+              Expanded(
+                child: Container(
+                  width: getWidth(context, MediaQuery.of(context).orientation),
+                  child: ListView.builder(
+                      itemCount: questionList.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return QuestionAndAnswerContainer(
+                            context,
+                            questionList[index].text,
+                            answerList[index].response,
+                            textEditingControllers[index]);
+                      }),
+                ),
+              ),
+              ElevatedButton(onPressed: () {}, child: Text("Update Answers"))
+            ],
           ),
         ));
   }

@@ -60,12 +60,17 @@ Question _$QuestionFromJson(Map<String, dynamic> json) => Question(
       order: json['order'] as int,
       text: json['text'] as String,
       type: json['type'] as String,
+      component:
+          Component.fromJson(json['component'][0] as Map<String, dynamic>),
+      scope: Scope.fromJson(json['scope'][0] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$QuestionToJson(Question instance) => <String, dynamic>{
       'order': instance.order,
       'text': instance.text,
       'type': instance.type,
+      'component': instance.component,
+      'scope': instance.scope,
     };
 
 Component _$ComponentFromJson(Map<String, dynamic> json) => Component(

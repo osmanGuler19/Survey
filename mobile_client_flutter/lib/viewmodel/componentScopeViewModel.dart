@@ -13,6 +13,21 @@ class ComponentAndScopeViewModel extends ChangeNotifier {
 
   late List<Scope> scopeList;
   late List<Component> componentList;
+  int satir = 0; //Component'ler
+  int sutun = 0; //Scope'lar
+
+  void nextQuestion() {
+    if (satir == componentList.length) {
+      return;
+    }
+    if (sutun < scopeList.length) {
+      sutun++;
+    }
+    if (sutun == scopeList.length) {
+      sutun = 0;
+      satir++;
+    }
+  }
 
   ComponentAndScopeViewModel() {
     scopeList = [];
@@ -39,7 +54,6 @@ class ComponentAndScopeViewModel extends ChangeNotifier {
 
       q_state = ComponentScopeState.IDLE;
       List<dynamic> qs = result.data!["scopes"] as List<dynamic>;
-      print(result);
       scopeList = qs.map((dynamic item) => Scope.fromJson(item)).toList();
 
       final QueryOptions options2 = QueryOptions(
@@ -48,8 +62,6 @@ class ComponentAndScopeViewModel extends ChangeNotifier {
       GraphQLClient client2 = await getClient();
       final QueryResult result2 = await client2.query(options2);
       List<dynamic> qs2 = result2.data!["components"] as List<dynamic>;
-      print(result2);
-
       componentList =
           qs2.map((dynamic item) => Component.fromJson(item)).toList();
       q_state = ComponentScopeState.IDLE;
@@ -59,5 +71,13 @@ class ComponentAndScopeViewModel extends ChangeNotifier {
 
       q_state = ComponentScopeState.ERROR;
     }
+  }
+
+  List<Component> getComponentsList() {
+    return componentList;
+  }
+
+  List<Scope> getScopesList() {
+    return scopeList;
   }
 }
