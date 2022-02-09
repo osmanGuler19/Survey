@@ -22,7 +22,7 @@ Widget layoutTheButtons(
   List<Widget> mywidget = <Widget>[];
   for (int i = 0; i < components.length; i++) {
     var temp = <Widget>[];
-    print("Scope length: ${scopes.length}");
+
     for (int j = 0; j < scopes.length; j++) {
       temp.add(MatrixItem(
           tooltip: "${components[i].label} && ${scopes[j].label}",

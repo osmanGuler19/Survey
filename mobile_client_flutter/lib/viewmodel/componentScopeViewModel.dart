@@ -17,16 +17,37 @@ class ComponentAndScopeViewModel extends ChangeNotifier {
   int sutun = 0; //Scope'lar
 
   void nextQuestion() {
-    if (satir == componentList.length) {
+    if (satir == componentList.length - 1 && sutun == scopeList.length - 1) {
       return;
     }
     if (sutun < scopeList.length) {
       sutun++;
+      return;
     }
-    if (sutun == scopeList.length) {
+    if (sutun == scopeList.length - 1) {
       sutun = 0;
       satir++;
     }
+  }
+
+  void previousQuestion() {
+    if (satir == 0 && sutun == 0) {
+      return;
+    }
+    if (sutun > 0) {
+      sutun--;
+      return;
+    }
+    if (sutun == 0) {
+      sutun = scopeList.length - 1;
+      satir--;
+    }
+  }
+
+  String getCurrentQuestionKey() {
+    return componentList[satir].label.trim() +
+        " && " +
+        scopeList[sutun].label.trim();
   }
 
   ComponentAndScopeViewModel() {

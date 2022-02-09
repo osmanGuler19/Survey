@@ -15,14 +15,16 @@ class QuestionViewModel extends ChangeNotifier {
   late QState q_state;
 
   late List<Question> questionList;
-  late List<List<Question>> questionMatrix;
+
   late Map<String, List<Question>> questionMap;
+  late Map<String, List<TextEditingController>> textEditingControllerMap;
   int i = 0;
 
   QuestionViewModel() {
     questionList = [];
-    questionMatrix = [[]];
+
     questionMap = {};
+    textEditingControllerMap = {};
     q_state = QState.IDLE;
     fetchQuestions();
   }
@@ -56,6 +58,11 @@ class QuestionViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  // String type must be like "component && scope"
+  List<Question> getQuestionsByComponentScope(String componentScope) {
+    return questionMap[componentScope]!;
+  }
+
   Future<void> fetchQuestions() async {
     try {
       q_state = QState.BUSY;
@@ -70,16 +77,18 @@ class QuestionViewModel extends ChangeNotifier {
         Question temp = Question.fromJson(qs[ind]);
         questionList.add(temp);
         String scopeComponent =
-            temp.component.label.trim() + " && " + temp.scope.label.trim();
-
+            temp.component.label + " && " + temp.scope.label;
+        TextEditingController controller = new TextEditingController();
         if (questionMap.containsKey(scopeComponent)) {
           questionMap[scopeComponent]!.add(temp);
+          textEditingControllerMap[scopeComponent]!.add(controller);
         } else {
           questionMap[scopeComponent] = [temp];
+          textEditingControllerMap[scopeComponent] = [controller];
         }
       }
       print("QuestionMap : ");
-      print(questionMap["Project && Actors/Agents"] as List<Question>);
+      print(questionMap["Project && Actors/Agents"]);
       notifyListeners();
     } catch (e) {
       print(e);

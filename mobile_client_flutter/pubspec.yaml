@@ -23,6 +23,7 @@ dependencies:
   flutter_svg: ^0.23.0+1
   marquee: ^2.2.0
   hovering: ^1.0.4
+  url_launcher: ^6.0.18
 
 dev_dependencies:
   flutter_test:

@@ -13,6 +13,7 @@ import 'view/signin.dart';
 import 'view/users_surveys_list.dart';
 import 'view/user_landing.dart';
 import 'view/landing_page.dart';
+import 'view/first_landing_page.dart';
 
 void main() async {
   //await initHiveForFlutter();
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) => LandingPage(),
+          '/': (context) => FirstLandingPage(),
           //'/users': (context) => UserListScreen(),
         },
         debugShowCheckedModeBanner: false,

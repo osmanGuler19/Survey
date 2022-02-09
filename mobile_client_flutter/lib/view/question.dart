@@ -1,6 +1,7 @@
 import 'package:client_flutter/model/myModel.dart';
 import 'package:client_flutter/viewmodel/componentScopeViewModel.dart';
 import 'package:client_flutter/viewmodel/questionViewModel.dart';
+import 'package:client_flutter/widgets/question_page/questionAnswerContainer.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:progress_indicators/progress_indicators.dart';
@@ -18,20 +19,38 @@ import '../viewmodel/answerViewModel.dart';
 class QuestionPage extends StatelessWidget {
   const QuestionPage({Key? key}) : super(key: key);
 
-  Widget getWidgetsByCondition(QuestionViewModel a) {
+  Widget getWidgetsByCondition(BuildContext context, QuestionViewModel a) {
     if (a.q_state == QState.BUSY) {
       return Column(
         children: [SizedBox(), CircularProgressIndicator(), SizedBox()],
       );
     } else if (a.q_state == QState.IDLE) {
-      return Column(
-        children: [
-          ProgressBar(),
-          SizedBox(
-            height: 10,
-          ),
-          QuestionContainer(qText: a.questionList[a.i].text),
-        ],
+      final csm = Provider.of<ComponentAndScopeViewModel>(context);
+      return SizedBox(
+        height: MediaQuery.of(context).size.height,
+        child: Column(
+          children: [
+            ProgressBar(),
+            SizedBox(
+              height: 10,
+            ),
+            Expanded(
+              child: ListView.builder(
+                  //shrinkWrap: true,
+                  //physics: NeverScrollableScrollPhysics(),
+                  itemCount: a.questionMap[csm.getCurrentQuestionKey()]!.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    print(a.questionMap[csm.getCurrentQuestionKey()]![index]);
+                    return QuestionAnswerContainer(
+                        question:
+                            a.questionMap[csm.getCurrentQuestionKey()]![index],
+                        controller: a.textEditingControllerMap[
+                            csm.getCurrentQuestionKey()]![index]);
+                  }),
+            ),
+            //QuestionContainer(qText: a.questionList[a.i].text),
+          ],
+        ),
       );
     }
     return Text(
@@ -66,14 +85,19 @@ class QuestionPage extends StatelessWidget {
         width: getWidth(context, MediaQuery.of(context).orientation),
         //height: MediaQuery.of(context).size.height * 0.5,
         child: SingleChildScrollView(
+          physics: ScrollPhysics(),
           padding: EdgeInsets.only(bottom: 15),
           child: Column(
+            //mainAxisSize: MainAxisSize.max,
             children: [
-              JumpingDotsProgressIndicator(
-                fontSize: 20.0,
+              Container(
+                height: 30,
+                child: JumpingDotsProgressIndicator(
+                  fontSize: 20.0,
+                ),
               ),
               Consumer<QuestionViewModel>(builder: (_, a, child) {
-                return getWidgetsByCondition(a);
+                return getWidgetsByCondition(context, a);
               }),
               /*
               Consumer<AnswerViewModel>(builder: (_, a, child) {
@@ -82,11 +106,13 @@ class QuestionPage extends StatelessWidget {
                 );
               }),
               */
+              /*
               Container(
                 child: AnswerContainer(
                   controller: controller,
                 ),
               ),
+              */
               Container(
                 padding: EdgeInsets.only(top: 20),
                 child: Row(
