@@ -21,6 +21,14 @@ class QuestionPage extends StatelessWidget {
 
   Widget getWidgetsByCondition(
       BuildContext context, QuestionViewModel a, ComponentAndScopeViewModel b) {
+    print("questionmap :" + a.questionMap.keys.last);
+    print("questionmap :" + a.questionMap.keys.length.toString());
+    print("questionmap :" + a.questionMap.keys.elementAt(0));
+    print("questionmap :" + a.questionMap.keys.elementAt(1));
+    print("questionmap :" + a.questionMap.keys.elementAt(2));
+    print("questionmap :" + a.questionMap.keys.elementAt(3));
+    print("questionmap :" + a.questionMap.keys.elementAt(4));
+    print("questionmap :" + a.questionList.last.text);
     if (a.q_state == QState.BUSY) {
       return Column(
         children: [SizedBox(), CircularProgressIndicator(), SizedBox()],
@@ -36,11 +44,9 @@ class QuestionPage extends StatelessWidget {
             ),
             Expanded(
               child: ListView.builder(
-                  //shrinkWrap: true,
-                  //physics: NeverScrollableScrollPhysics(),
                   itemCount: a.questionMap[b.getCurrentQuestionKey()]!.length,
                   itemBuilder: (BuildContext context, int index) {
-                    print(a.questionMap[b.getCurrentQuestionKey()]![index]);
+                    //print(a.questionMap[b.getCurrentQuestionKey()]![index]);
                     return QuestionAnswerContainer(
                         question:
                             a.questionMap[b.getCurrentQuestionKey()]![index],

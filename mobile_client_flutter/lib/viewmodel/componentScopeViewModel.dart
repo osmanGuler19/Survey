@@ -17,18 +17,23 @@ class ComponentAndScopeViewModel extends ChangeNotifier {
   int sutun = 0; //Scope'lar
 
   void nextQuestion() {
+    for (int i = 0; i < componentList.length; i++) {
+      print("Components : " + componentList[i].label);
+    }
     if (satir == componentList.length - 1 && sutun == scopeList.length - 1) {
-      notifyListeners();
+      print("Satir ;" + satir.toString() + " Sutun : " + sutun.toString());
       return;
     }
     if (sutun < scopeList.length - 1) {
       sutun++;
       notifyListeners();
+      print("Satir ;" + satir.toString() + " Sutun : " + sutun.toString());
       return;
     }
     if (sutun == scopeList.length - 1 && satir < componentList.length - 1) {
       sutun = 0;
       satir++;
+      print("Satir ;" + satir.toString() + " Sutun : " + sutun.toString());
     }
     notifyListeners();
   }
@@ -51,9 +56,7 @@ class ComponentAndScopeViewModel extends ChangeNotifier {
   }
 
   String getCurrentQuestionKey() {
-    return componentList[satir].label.trim() +
-        " && " +
-        scopeList[sutun].label.trim();
+    return componentList[satir].label + " && " + scopeList[sutun].label;
   }
 
   bool isLastMatrix() {
