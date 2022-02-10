@@ -18,36 +18,49 @@ class ComponentAndScopeViewModel extends ChangeNotifier {
 
   void nextQuestion() {
     if (satir == componentList.length - 1 && sutun == scopeList.length - 1) {
+      notifyListeners();
       return;
     }
-    if (sutun < scopeList.length) {
+    if (sutun < scopeList.length - 1) {
       sutun++;
+      notifyListeners();
       return;
     }
-    if (sutun == scopeList.length - 1) {
+    if (sutun == scopeList.length - 1 && satir < componentList.length - 1) {
       sutun = 0;
       satir++;
     }
+    notifyListeners();
   }
 
   void previousQuestion() {
     if (satir == 0 && sutun == 0) {
+      notifyListeners();
       return;
     }
     if (sutun > 0) {
       sutun--;
+      notifyListeners();
       return;
     }
     if (sutun == 0) {
       sutun = scopeList.length - 1;
       satir--;
     }
+    notifyListeners();
   }
 
   String getCurrentQuestionKey() {
     return componentList[satir].label.trim() +
         " && " +
         scopeList[sutun].label.trim();
+  }
+
+  bool isLastMatrix() {
+    if (satir == componentList.length - 1 && sutun == scopeList.length - 1) {
+      return true;
+    }
+    return false;
   }
 
   ComponentAndScopeViewModel() {

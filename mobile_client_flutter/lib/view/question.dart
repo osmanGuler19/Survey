@@ -19,13 +19,13 @@ import '../viewmodel/answerViewModel.dart';
 class QuestionPage extends StatelessWidget {
   const QuestionPage({Key? key}) : super(key: key);
 
-  Widget getWidgetsByCondition(BuildContext context, QuestionViewModel a) {
+  Widget getWidgetsByCondition(
+      BuildContext context, QuestionViewModel a, ComponentAndScopeViewModel b) {
     if (a.q_state == QState.BUSY) {
       return Column(
         children: [SizedBox(), CircularProgressIndicator(), SizedBox()],
       );
     } else if (a.q_state == QState.IDLE) {
-      final csm = Provider.of<ComponentAndScopeViewModel>(context);
       return SizedBox(
         height: MediaQuery.of(context).size.height,
         child: Column(
@@ -38,14 +38,14 @@ class QuestionPage extends StatelessWidget {
               child: ListView.builder(
                   //shrinkWrap: true,
                   //physics: NeverScrollableScrollPhysics(),
-                  itemCount: a.questionMap[csm.getCurrentQuestionKey()]!.length,
+                  itemCount: a.questionMap[b.getCurrentQuestionKey()]!.length,
                   itemBuilder: (BuildContext context, int index) {
-                    print(a.questionMap[csm.getCurrentQuestionKey()]![index]);
+                    print(a.questionMap[b.getCurrentQuestionKey()]![index]);
                     return QuestionAnswerContainer(
                         question:
-                            a.questionMap[csm.getCurrentQuestionKey()]![index],
+                            a.questionMap[b.getCurrentQuestionKey()]![index],
                         controller: a.textEditingControllerMap[
-                            csm.getCurrentQuestionKey()]![index]);
+                            b.getCurrentQuestionKey()]![index]);
                   }),
             ),
             //QuestionContainer(qText: a.questionList[a.i].text),
@@ -54,7 +54,7 @@ class QuestionPage extends StatelessWidget {
       );
     }
     return Text(
-        "Looks like our database has some errors! Don't worry we will fix it right away.");
+        "Looks like our database has some errors! Don't worry we will fix it right away!");
   }
 
   @override
@@ -96,8 +96,9 @@ class QuestionPage extends StatelessWidget {
                   fontSize: 20.0,
                 ),
               ),
-              Consumer<QuestionViewModel>(builder: (_, a, child) {
-                return getWidgetsByCondition(context, a);
+              Consumer2<QuestionViewModel, ComponentAndScopeViewModel>(
+                  builder: (_, a, b, child) {
+                return getWidgetsByCondition(context, a, b);
               }),
               /*
               Consumer<AnswerViewModel>(builder: (_, a, child) {

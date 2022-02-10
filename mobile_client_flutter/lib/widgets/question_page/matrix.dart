@@ -40,18 +40,15 @@ Widget layoutTheButtons(
         padding: EdgeInsets.all(8.0),
         child: Stack(
           children: [
-            Expanded(
-              flex: 1,
-              child: Container(
-                decoration: BoxDecoration(
-                    border: Border.all(
-                        style: BorderStyle.solid,
-                        color: Colors.grey,
-                        width: 2.0)),
-                child: ListView(
-                  padding: EdgeInsets.only(top: 15),
-                  children: mywidget,
-                ),
+            Container(
+              decoration: BoxDecoration(
+                  border: Border.all(
+                      style: BorderStyle.solid,
+                      color: Colors.grey,
+                      width: 2.0)),
+              child: ListView(
+                padding: EdgeInsets.only(top: 15),
+                children: mywidget,
               ),
             )
           ],

@@ -8,6 +8,7 @@ class FirstLandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         title: Center(
           child: GestureDetector(
             onTap: () => launch('https://github.com/osmanGuler19/Survey'),

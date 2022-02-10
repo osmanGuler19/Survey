@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) => FirstLandingPage(),
+          '/': (context) => LandingPage(),
           //'/users': (context) => UserListScreen(),
         },
         debugShowCheckedModeBanner: false,

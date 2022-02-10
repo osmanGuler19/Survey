@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../viewmodel/questionViewModel.dart';
 import '../../viewmodel/answerViewModel.dart';
 import '../../viewmodel/surveyViewModel.dart';
+import '../../viewmodel/componentScopeViewModel.dart';
 import 'package:provider/provider.dart';
 
 class NextButton extends StatelessWidget {
@@ -16,8 +17,9 @@ class NextButton extends StatelessWidget {
     final vma = Provider.of<AnswerViewModel>(context);
     final vms = Provider.of<SurveyViewModel>(context);
     final vmq = Provider.of<QuestionViewModel>(context);
+    final csm = Provider.of<ComponentAndScopeViewModel>(context);
     String isLast() {
-      if (vmq.isLastQuestion()) {
+      if (csm.isLastMatrix()) {
         return "Submit";
       } else {
         return "Next";
@@ -26,22 +28,28 @@ class NextButton extends StatelessWidget {
 
     return ElevatedButton(
       onPressed: () async {
+        /*
         Answer ans = new Answer(
             order: vma.answerOrder,
             response: controller.text,
             survey: vms.survey);
         vma.addAnswerToList(ans);
-
+        */
         if (vmq.isLastQuestion()) {
+          /*
           for (int i = 0; i < vma.answers.length; i++) {
             await vma.AddAnswer(
                 i, vma.answers[i].response, vms.survey, vmq.questionList[i]);
           }
           await vms.UpdateSurveyTime(vms.survey.survey_id, DateTime.now());
           Navigator.pop(context);
+          */
         } else {
+          /*
           vmq.nextQuestion();
           controller.clear();
+          */
+          csm.nextQuestion();
         }
       },
       child: Text(
